@@ -1,0 +1,25 @@
+@font-face {
+  font-family: ARCADE;
+  src: url("../src/assets/fonts/ARCADECLASSIC.TTF");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.lenis {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth {
+  overflow-y: auto;
+}
+
+.lenis.lenis-smooth [data-lenis] {
+  overscroll-behavior: none;
+}
+
+
+@theme{
+  --font-arcade : ARCADE
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Project Name",
+    "description": "Full description of your project...",
+    "img": "/src/assets/projects/project1.png",
+    "github": "https://github.com/yourusername/repo",
+    "live": "https://yourproject.com"
+  }
+]
