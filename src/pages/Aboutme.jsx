@@ -1,7 +1,11 @@
 import React from "react";
 import PS5 from "../components/PS5";
 
+import kendrick from '../assets/frames/kendrick.png'
+import blonde from '../assets/frames/blonde.png'
+import starboy from '../assets/frames/starboy.png'
 const AboutMe = () => {
+
   return (
     <section className="w-full min-h-screen bg-gray-900 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
       
@@ -20,7 +24,7 @@ const AboutMe = () => {
             <div className="transform rotate-1 hover:rotate-0 transition-transform duration-300">
               <div className="bg-amber-900 p-3 rounded shadow-2xl border-[2px] border-amber-950">
                 <img 
-                  src="/src/assets/frames/kendrick.png" 
+                  src={kendrick}
                   alt="Album artwork"
                   className="w-24 h-24 md:w-32 md:h-32 object-cover"
                 />
@@ -31,7 +35,7 @@ const AboutMe = () => {
             <div className="transform -rotate-2 hover:rotate-0 transition-transform duration-300">
               <div className="bg-amber-900 p-3 rounded shadow-2xl border-[2px] border-amber-950">
                 <img 
-                  src="/src/assets/frames/blonde.png" 
+                  src={blonde}
                   alt="Album artwork"
                   className="w-24 h-24 md:w-32 md:h-32 object-cover"
                 />
@@ -41,7 +45,7 @@ const AboutMe = () => {
             <div className="transform -rotate-1 hover:rotate-0 transition-transform duration-300">
               <div className="bg-amber-900 p-3 rounded shadow-2xl border-[2px] border-amber-950">
                 <img 
-                  src="/src/assets/frames/starboy.png" 
+                  src={starboy}
                   alt="Album artwork"
                   className="w-24 h-24 md:w-32 md:h-32 object-cover"
                 />
