@@ -2,17 +2,23 @@ import React, { useState, useEffect } from "react";
 import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
 
-// ⬅️ Import your local JSON file
+// JSON data
 import projectData from "../assets/info/project.json";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  useEffect(() => {
-    // Load JSON directly (no API)
-    setProjects(projectData);
+  // Load all project images from src/assets/projects
+  const images = import.meta.glob("../assets/projects/*", { eager: true });
 
+  useEffect(() => {
+    const resolvedProjects = projectData.map((p) => ({
+      ...p,
+      img: images[`../assets/projects/${p.img}`]?.default
+    }));
+
+    setProjects(resolvedProjects);
   }, []);
 
   return (
@@ -34,7 +40,7 @@ const Projects = () => {
             </h1>
 
             {/* Projects Grid */}
-            <div className="relative grid grid-cols-2 gap-4 md:gap-6 lg:bottom-8 ">
+            <div className="relative grid grid-cols-2 gap-4 md:gap-6 lg:bottom-8">
               {projects.map((project, index) => (
                 <div
                   key={index}
@@ -85,8 +91,8 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* RIGHT — LAPTOP + CAT */}
-            <div className="w-full lg:w-2/5 xl:w-1/3 relative flex justify-center lg:justify-end items-center lg:sticky lg:top-[50%] mt-8 lg:mt-0 md:-translate-x-32">
+          {/* RIGHT — Laptop + Cat */}
+          <div className="w-full lg:w-2/5 xl:w-1/3 relative flex justify-center lg:justify-end items-center lg:sticky lg:top-[50%] mt-8 lg:mt-0 md:-translate-x-32">
             <div className="relative">
 
               {/* Laptop */}
@@ -131,20 +137,19 @@ const Projects = () => {
             {/* Content */}
             <div className="p-6">
               {selectedProject.img && (
-               <img
-  src={selectedProject.img}
-  alt={selectedProject.title}
-  className="
-    w-full 
-    h-64 object-cover                     /* mobile: cropping okay */
+                <img
+                  src={selectedProject.img}
+                  alt={selectedProject.title}
+                  className="
+                    w-full 
+                    h-64 object-cover
 
-    md:h-auto md:max-h-[70vh]            /* bigger view for md+ */
-    md:object-contain                     /* show FULL image on md+ */
+                    md:h-auto md:max-h-[70vh]
+                    md:object-contain
 
-    rounded-lg mb-6 border-2 border-gray-700
-  "
-/>
-
+                    rounded-lg mb-6 border-2 border-gray-700
+                  "
+                />
               )}
 
               <p className="text-gray-300 text-lg leading-relaxed mb-6">

@@ -2,7 +2,7 @@
   {
     "title": "Passkey",
     "description": "A secure password generator and password manager featuring encryption/decryption and Google authentication for passwordless login.",
-    "img": "/public/projects/passkey.png",
+    "img": "passkey.png",
     "github": "https://github.com/Daksh700/passwordmanager",
     "live": "",
     "techstack": ["React", "Node.js", "Express", "MongoDB"]
@@ -10,7 +10,7 @@
   {
     "title": "Vibexx",
     "description": "Generates personalized Spotify playlists based on the user’s mood. Detects emotions using webcam image processing and syncs playlists directly to the user’s Spotify account.",
-    "img": "/public/projects/vibexx.png",
+    "img": "vibexx.png",
     "github": "https://github.com/pradnyeshbhalekar/vibexx",
     "live": "",
     "techstack": ["Next.js", "Flask"]
@@ -18,7 +18,7 @@
   {
     "title": "GameLobby",
     "description": "A platform where gaming cafes can list their setups and users can discover, browse, and book playtime seamlessly.",
-    "img": "/public/projects//gamelobby.png",
+    "img": "gamelobby.png",
     "github": "https://github.com/pradnyeshbhalekar/gamelobby-frontend",
     "github2": "https://github.com/pradnyeshbhalekar/gamelobby-backend",
     "live": "",
@@ -27,7 +27,7 @@
   {
     "title": "FormGen",
     "description": "A Python package that auto-generates full React forms using JSON. Eliminates repetitive form boilerplate and speeds up development.",
-    "img": "/public/projects/formgen.png",
+    "img": "formgen.png",
     "github": "https://github.com/pradnyeshbhalekar/formgen",
     "live": "https://formgen-app.onrender.com/",
     "pypi": "https://pypi.org/project/pyformgen/",
