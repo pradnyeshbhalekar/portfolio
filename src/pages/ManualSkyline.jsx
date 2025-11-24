@@ -157,7 +157,7 @@ export default function ManualSkyline() {
       </div>
 
       {/* inner design container */}
-      <div className="absolute bottom-0 left-1/2 pointer-events-none" style={innerStyle} aria-hidden="true">
+      <div className="absolute bottom-10 left-1/2 pointer-events-none" style={innerStyle} aria-hidden="true">
         {/* buildings */}
         {buildings.map((building, idx) => {
           const hideClass = building.hideOnSmall ? "hidden sm:block" : "";

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import "./index.css";
 import Projects from "./pages/Projects";
+import Experience from "./pages/Experience";
 
 
 function App(){
@@ -28,6 +29,7 @@ function App(){
       <ManualSkyline  />
       <AboutMe/>
       <Projects/>
+      <Experience/>
     </div>
   );
 }

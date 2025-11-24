@@ -1,115 +1,126 @@
 import React, { useState, useEffect } from "react";
-import PS5 from "../components/PS5";
 import Laptop from "../components/Laptop";
+import CatSleep from "../components/CatSleep";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    // Load projects from JSON
-    fetch('/src/assets/info/project.json')
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL; // Vite env
+
+    fetch(`${BASE_URL}/projects`)
       .then(res => res.json())
       .then(data => setProjects(data))
-      .catch(err => console.error('Error loading projects:', err));
+      .catch(err => console.error("Error loading projects:", err));
   }, []);
 
-  const bookColors = [
-    'bg-red-600',
-    'bg-blue-600',
-    'bg-green-600',
-    'bg-purple-600',
-    'bg-yellow-600',
-    'bg-pink-600',
-    'bg-indigo-600',
-    'bg-orange-600'
-  ];
-
   return (
-    <section className="w-full min-h-screen bg-gray-900 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
+    <section className="w-full min-h-screen bg-gray-800 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
       
       {/* Floor */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/30"></div>
 
       {/* ROOM container */}
-      <div className="w-full max-w-7xl flex flex-col md:flex-row items-end md:items-end justify-between gap-8 md:gap-16 px-4 md:px-12">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+        
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          
+          {/* LEFT — Projects Grid */}
+          <div className="w-full lg:w-3/5 xl:w-2/3">
+            <h1 className="font-arcade text-4xl md:text-5xl lg:text-6xl mb-8 text-center lg:text-left">
+              MY PROJECTS
+            </h1>
 
-        {/* LEFT — Bookshelf with Projects */}
-        <div className="w-full md:w-2/3 mb-8 md:mb-16">
-          <h1 className="font-arcade text-4xl md:text-5xl mb-8 text-center md:text-left">
-            MY PROJECTS
-          </h1>
-
-          {/* Bookshelf */}
-          <div className="relative">
-            {/* Shelf wood */}
-            <div className="bg-amber-900 h-4 w-full rounded-t-sm shadow-lg mb-1"></div>
-            
-            {/* Books Container */}
-            <div className="bg-amber-950/50 p-6 rounded-b-lg border-4 border-amber-900/50 min-h-[300px]">
-              <div className="flex flex-wrap gap-2 items-end">
-                {projects.map((project, index) => (
-                  <div
-                    key={index}
-                    onClick={() => setSelectedProject(project)}
-                    className={`
-                      ${bookColors[index % bookColors.length]}
-                      w-16 h-64 rounded-sm cursor-pointer
-                      transform hover:scale-105 hover:-translate-y-4
-                      transition-all duration-300
-                      shadow-[4px_4px_0px_rgba(0,0,0,0.5)]
-                      relative group
-                      flex items-end justify-center
-                      border-r-4 border-black/30
-                    `}
-                  >
-                    {/* Book spine text */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="transform -rotate-90 text-white font-bold text-xs whitespace-nowrap px-2 text-shadow">
-                        {project.title}
-                      </p>
+            {/* Projects Grid */}
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedProject(project)}
+                  className="
+                    bg-gray-800/90 
+                    rounded-xl 
+                    overflow-hidden 
+                    cursor-pointer 
+                    border border-gray-700 
+                    shadow-lg
+                    transition-all 
+                    duration-300 
+                    hover:-translate-y-2
+                    hover:shadow-xl
+                    hover:border-indigo-400
+                    hover:bg-gray-700
+                    group
+                  "
+                >
+                  {/* Project Image */}
+                  {project.img && (
+                    <div className="h-48 overflow-hidden bg-gray-700">
+                      <img
+                        src={project.img}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    
-                    {/* Hover indicator */}
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span className="text-xs bg-black/80 px-2 py-1 rounded whitespace-nowrap">
-                        Click to open
-                      </span>
+                  )}
+
+                  {/* Project Info */}
+                  <div className="p-5">
+                    <h3 className="font-bold text-xl mb-2 text-indigo-300 group-hover:text-indigo-200">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-gray-400 text-sm line-clamp-2 mb-3">
+                      {project.description}
+                    </p>
+
+                    <div className="text-xs text-gray-500 group-hover:text-indigo-300 transition-colors">
+                      Click to view details →
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-
-            {/* Bottom shelf wood */}
-            <div className="bg-amber-900 h-3 w-full rounded-b-sm shadow-lg mt-1"></div>
           </div>
-        </div>
 
-        {/* RIGHT — PS5 Character */}
-        <div className="flex-shrink-0">
-          <div className="scale-[2] sm:scale-[2.5] md:scale-[3.5] lg:scale-[4]">
-            <Laptop/>
+          {/* RIGHT — LAPTOP + CAT (unchanged positions) */}
+          <div className="w-full lg:w-2/5 xl:w-1/3 flex justify-center lg:justify-end items-center lg:sticky lg:top-[50%] mt-8 lg:mt-0">
+            <div className="relative">
+              
+              {/* Laptop */}
+              <div className="transform scale-[2.5] sm:scale-[3] md:scale-[3.5] lg:scale-[3.5]">
+                <Laptop />
+              </div>
+
+              {/* Cat */}
+              <div className="absolute -right-12 sm:-right-16 md:-right-20 lg:-right-20 bottom-0 transform scale-75 sm:scale-90 md:scale-100 lg:scale-100 lg:bottom-[-5px]">
+                <CatSleep />
+              </div>
+
+            </div>
           </div>
+
         </div>
       </div>
 
-      {/* Modal for Project Details */}
+      {/* Modal */}
       {selectedProject && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
-          <div 
-            className="bg-gray-800 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border-4 border-gray-700 shadow-2xl"
+          <div
+            className="bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border-4 border-gray-700 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
+            {/* Header */}
             <div className="sticky top-0 bg-gray-900 p-6 border-b-2 border-gray-700 flex justify-between items-center">
-              <h2 className="font-arcade text-2xl md:text-3xl text-cyan-400">
+              <h2 className="font-arcade text-2xl md:text-3xl text-indigo-300">
                 {selectedProject.title}
               </h2>
-              <button 
+              <button
                 onClick={() => setSelectedProject(null)}
                 className="text-white hover:text-red-500 text-3xl leading-none transition-colors"
               >
@@ -117,29 +128,25 @@ const Projects = () => {
               </button>
             </div>
 
-            {/* Modal Content */}
+            {/* Content */}
             <div className="p-6">
-              {/* Project Image */}
               {selectedProject.img && (
-                <img 
-                  src={selectedProject.img} 
+                <img
+                  src={selectedProject.img}
                   alt={selectedProject.title}
                   className="w-full h-64 object-cover rounded-lg mb-6 border-2 border-gray-700"
                 />
               )}
 
-              {/* Project Description */}
-              <div className="prose prose-invert max-w-none">
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {selectedProject.description}
-                </p>
-              </div>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                {selectedProject.description}
+              </p>
 
-              {/* Links (if available) */}
+              {/* Links */}
               {(selectedProject.github || selectedProject.live) && (
-                <div className="flex gap-4 mt-6">
+                <div className="flex gap-4">
                   {selectedProject.github && (
-                    <a 
+                    <a
                       href={selectedProject.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -148,12 +155,13 @@ const Projects = () => {
                       GitHub →
                     </a>
                   )}
+
                   {selectedProject.live && (
-                    <a 
+                    <a
                       href={selectedProject.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-lg transition-colors font-semibold"
+                      className="bg-indigo-500 hover:bg-indigo-400 text-white px-6 py-3 rounded-lg transition-colors font-semibold"
                     >
                       Live Demo →
                     </a>
@@ -164,6 +172,7 @@ const Projects = () => {
           </div>
         </div>
       )}
+
     </section>
   );
 };
