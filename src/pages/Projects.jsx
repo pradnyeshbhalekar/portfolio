@@ -62,7 +62,7 @@ const Projects = () => {
                   "
                 >
                   {/* Project Image */}
-                  {project.img && (
+
                     <div className="h-48 overflow-hidden bg-gray-700">
                       <img
                         src={project.img}
@@ -70,7 +70,7 @@ const Projects = () => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                  )}
+
 
                   {/* Project Info */}
                   <div className="p-5">
