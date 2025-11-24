@@ -10,7 +10,7 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   // Load all project images from src/assets/projects
-  const images = import.meta.glob("../assets/projects/*", { eager: true });
+  const images = import.meta.glob("../../public/projects/*", { eager: true });
 
   useEffect(() => {
     const resolvedProjects = projectData.map((p) => ({
