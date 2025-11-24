@@ -9,16 +9,9 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Load all project images from src/assets/projects
-  const images = import.meta.glob("../../public/projects/*", { eager: true });
-
   useEffect(() => {
-    const resolvedProjects = projectData.map((p) => ({
-      ...p,
-      img: images[`../assets/projects/${p.img}`]?.default
-    }));
-
-    setProjects(resolvedProjects);
+    // No importing images — public/ images are directly usable
+    setProjects(projectData);
   }, []);
 
   return (
@@ -62,15 +55,15 @@ const Projects = () => {
                   "
                 >
                   {/* Project Image */}
-
+                  {project.img && (
                     <div className="h-48 overflow-hidden bg-gray-700">
                       <img
-                        src={project.img}
+                        src={project.img}   // <-- now works
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-
+                  )}
 
                   {/* Project Info */}
                   <div className="p-5">
