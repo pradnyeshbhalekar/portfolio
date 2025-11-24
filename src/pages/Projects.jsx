@@ -131,11 +131,20 @@ const Projects = () => {
             {/* Content */}
             <div className="p-6">
               {selectedProject.img && (
-                <img
-                  src={selectedProject.img}
-                  alt={selectedProject.title}
-                  className="w-full h-64 object-cover rounded-lg mb-6 border-2 border-gray-700"
-                />
+               <img
+  src={selectedProject.img}
+  alt={selectedProject.title}
+  className="
+    w-full 
+    h-64 object-cover                     /* mobile: cropping okay */
+
+    md:h-auto md:max-h-[70vh]            /* bigger view for md+ */
+    md:object-contain                     /* show FULL image on md+ */
+
+    rounded-lg mb-6 border-2 border-gray-700
+  "
+/>
+
               )}
 
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
