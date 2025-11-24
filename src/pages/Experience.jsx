@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
+import experienceData from "../assets/info/experience.json";
+
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);
 
   useEffect(() => {
-    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-    fetch(`${BASE_URL}/experience`)
-      .then(res => res.json())
-      .then(data => setExperiences(data))
-      .catch(err => console.error("Error loading experience:", err));
+    setExperiences(experienceData)
   }, []);
 
   return (

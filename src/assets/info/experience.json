@@ -1,0 +1,15 @@
+[
+    {
+        "_id": "69242d0794d6cbfd35ffae4c",
+        "company": "Thworks",
+        "description": "Developed production-ready systems across mobile and web. Built a React Native app from scratch, created a Next.js dashboard, and implemented backend services using Flask and Node.js. Worked on authentication, API design, database integration, and overall performance improvements for real users.",
+        "duration": "Dec 2024 – May 2025 (6 months)",
+        "role": "Software Developer Intern",
+        "techstack": [
+            "React Native",
+            "Next.js",
+            "Flask",
+            "Node.js"
+        ]
+    }
+]

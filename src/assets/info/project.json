@@ -1,27 +1,36 @@
 [
   {
-    "title": "Project Name",
-    "description": "Full description of your project...",
-    "img": "/src/assets/projects/project1.png",
-    "github": "https://github.com/yourusername/repo",
-    "live": "https://yourproject.com"
-  },{
-    "title": "Project Name",
-    "description": "Full description of your project...",
-    "img": "/src/assets/projects/project1.png",
-    "github": "https://github.com/yourusername/repo",
-    "live": "https://yourproject.com"
-  },{
-    "title": "Project Name",
-    "description": "Full description of your project...",
-    "img": "/src/assets/projects/project1.png",
-    "github": "https://github.com/yourusername/repo",
-    "live": "https://yourproject.com"
-  },{
-    "title": "Project Name",
-    "description": "Full description of your project...",
-    "img": "/src/assets/projects/project1.png",
-    "github": "https://github.com/yourusername/repo",
-    "live": "https://yourproject.com"
+    "title": "Passkey",
+    "description": "A secure password generator and password manager featuring encryption/decryption and Google authentication for passwordless login.",
+    "img": "/src/assets/projects/passkey.png",
+    "github": "https://github.com/Daksh700/passwordmanager",
+    "live": "",
+    "techstack": ["React", "Node.js", "Express", "MongoDB"]
+  },
+  {
+    "title": "Vibexx",
+    "description": "Generates personalized Spotify playlists based on the user’s mood. Detects emotions using webcam image processing and syncs playlists directly to the user’s Spotify account.",
+    "img": "/src/assets/projects/vibexx.png",
+    "github": "https://github.com/pradnyeshbhalekar/vibexx",
+    "live": "",
+    "techstack": ["Next.js", "Flask"]
+  },
+  {
+    "title": "GameLobby",
+    "description": "A platform where gaming cafes can list their setups and users can discover, browse, and book playtime seamlessly.",
+    "img": "/src/assets/projects/gamelobby.png",
+    "github": "https://github.com/pradnyeshbhalekar/gamelobby-frontend",
+    "github2": "https://github.com/pradnyeshbhalekar/gamelobby-backend",
+    "live": "",
+    "techstack": ["MongoDB", "Express", "React", "Node.js"]
+  },
+  {
+    "title": "FormGen",
+    "description": "A Python package that auto-generates full React forms using JSON. Eliminates repetitive form boilerplate and speeds up development.",
+    "img": "/src/assets/projects/formgen.png",
+    "github": "https://github.com/pradnyeshbhalekar/formgen",
+    "live": "https://formgen-app.onrender.com/",
+    "pypi": "https://pypi.org/project/pyformgen/",
+    "techstack": ["Python"]
   }
 ]

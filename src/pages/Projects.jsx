@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
 
+// ⬅️ Import your local JSON file
+import projectData from "../assets/info/project.json";
+
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    const BASE_URL = import.meta.env.VITE_API_BASE_URL; // Vite env
+    // Load JSON directly (no API)
+    setProjects(projectData);
 
-    fetch(`${BASE_URL}/projects`)
-      .then(res => res.json())
-      .then(data => setProjects(data))
-      .catch(err => console.error("Error loading projects:", err));
   }, []);
 
   return (
     <section className="w-full min-h-screen bg-gray-800 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
-      
+
       {/* Floor */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/30"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-black/30"></div>
 
       {/* ROOM container */}
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
@@ -34,7 +34,7 @@ const Projects = () => {
             </h1>
 
             {/* Projects Grid */}
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="relative grid grid-cols-2 gap-4 md:gap-6 lg:bottom-8 ">
               {projects.map((project, index) => (
                 <div
                   key={index}
@@ -85,10 +85,10 @@ const Projects = () => {
             </div>
           </div>
 
-          {/* RIGHT — LAPTOP + CAT (unchanged positions) */}
-          <div className="w-full lg:w-2/5 xl:w-1/3 flex justify-center lg:justify-end items-center lg:sticky lg:top-[50%] mt-8 lg:mt-0">
+          {/* RIGHT — LAPTOP + CAT */}
+            <div className="w-full lg:w-2/5 xl:w-1/3 relative flex justify-center lg:justify-end items-center lg:sticky lg:top-[50%] mt-8 lg:mt-0 md:-translate-x-32">
             <div className="relative">
-              
+
               {/* Laptop */}
               <div className="transform scale-[2.5] sm:scale-[3] md:scale-[3.5] lg:scale-[3.5]">
                 <Laptop />
