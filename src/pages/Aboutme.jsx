@@ -7,7 +7,7 @@ import starboy from '../assets/frames/starboy.png'
 const AboutMe = () => {
 
   return (
-    <section className="w-full min-h-screen bg-gray-900 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
+    <section id="about" className="w-full min-h-screen bg-gray-900 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
       
       {/* Floor */}
       <div className="absolute bottom-0 left-0  right-0 h-24 bg-black/30"></div>

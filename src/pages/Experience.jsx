@@ -12,7 +12,7 @@ const Experience = () => {
   }, []);
 
   return (
-    <section className="w-full min-h-screen bg-gray-700 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
+    <section id="experience" className="w-full min-h-screen bg-gray-700 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden">
       
       {/* Floor */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/40"></div>

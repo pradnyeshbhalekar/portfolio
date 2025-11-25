@@ -14,7 +14,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="w-full min-h-screen bg-gray-800 text-white flex items-center justify-center px-4 sm:px-6 py-16 relative overflow-hidden">
+    <section id="projects" className="w-full min-h-screen bg-gray-800 text-white flex items-center justify-center px-4 sm:px-6 py-16 relative overflow-hidden">
 
       {/* Floor */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-black/30"></div>
@@ -85,7 +85,7 @@ const Projects = () => {
           </div>
 
           {/* RIGHT — Laptop + Cat (desktop only) */}
-          <div className="hidden lg:flex w-full lg:w-2/5 xl:w-1/3 relative justify-center lg:justify-end items-center lg:sticky lg:top-[50%]">
+          <div className="hidden lg:flex w-full lg:w-2/5 xl:w-1/3 relative justify-center lg:justify-end items-center lg:sticky lg:top-[50%] md:ml-[-10%]">
             <div className="relative">
 
               {/* Laptop */}
