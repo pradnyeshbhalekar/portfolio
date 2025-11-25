@@ -208,7 +208,7 @@ export default function ManualSkyline() {
 
         {/* Cat - responsive with Tailwind scale */}
         <div
-          className="absolute left-[52%] bottom-[-24%] sm:bottom-[-27%] md:bottom-[-4%]   z-[60] scale-[1.4] sm:scale-[1.4] md:scale-[1.5]  lg:scale-[1.5] lg:bottom-[-24%] lg:left-[50%]"
+          className="absolute left-[52%] bottom-[-24%] sm:bottom-[-18%] md:bottom-[-19%] z-[60] scale-[1.5] sm:scale-[1.6] md:scale-[1.7]  lg:scale-[1.5] lg:bottom-[-17%] lg:left-[50%]"
           style={{
             width: `${0.14 * DESIGN_WIDTH}px`,
             height: `${0.375 * DESIGN_HEIGHT}px`,

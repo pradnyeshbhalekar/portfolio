@@ -66,14 +66,13 @@ const AboutMe = () => {
 
         {/* RIGHT SIDE — About Me Text */}
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h1 className="font-arcade text-4xl md:text-5xl mb-6">
+          <h1 className="font-arcade text-4xl md:text-5xl mt-4">
             ABOUT ME
           </h1>
           
           <p className="text-base md:text-lg leading-relaxed mb-8">
             Hello! I'm <span className="font-bold">Pradnyesh Bhalekar</span>.  
-            I'm a passionate developer who loves crafting immersive interfaces, smooth animations, and unique digital experiences.  
-            This portfolio reflects my creative style — fun, animated, and full of personality.
+            I’m a BSc IT student who enjoys building practical, functional applications using React, React Native, JavaScript, Firebase, and backend tools like Node and Flask. I like taking ideas from scratch and turning them into clean, working products, while continuously improving my skills through hands-on projects.
           </p>
 
           {/* Contact Links */}
@@ -90,7 +89,7 @@ const AboutMe = () => {
             </a>
 
             <a 
-              href="/path-to-your-resume.pdf" 
+              href="/resume/resume.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"

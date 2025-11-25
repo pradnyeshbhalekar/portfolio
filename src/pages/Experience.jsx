@@ -76,11 +76,11 @@ const Experience = () => {
 
                       <div className="flex flex-wrap gap-4 text-gray-400 text-sm md:text-base">
                         <span className="flex items-center gap-2">
-                          📅 {exp.duration}
+                           {exp.duration}
                         </span>
                         {exp.location && (
                           <span className="flex items-center gap-2">
-                            📍 {exp.location}
+                             {exp.location}
                           </span>
                         )}
                       </div>
