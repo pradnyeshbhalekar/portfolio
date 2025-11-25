@@ -41,15 +41,15 @@ export default function ManualSkyline() {
       const scaleByWidth = W / DESIGN_WIDTH;
 
       // height-based target to keep skyline visible on tall phones
-      let targetPortion = 0.30;
-      if (W < 420) targetPortion = 0.36;
+      let targetPortion = 0.25;
+      if (W < 420) targetPortion = 0.32;
       const scaleByHeightTarget = (H * targetPortion) / DESIGN_HEIGHT;
 
       // hybrid pick larger so skyline doesn't become tiny on tall narrow viewports
       const finalScale = Math.max(scaleByWidth, scaleByHeightTarget);
 
-      // clamp max scale for very small screens
-      const clamped = Math.min(finalScale, 1.8);
+      // clamp for stability across all zoom levels
+      const clamped = Math.max(0.3, Math.min(finalScale, 3));
       setScale(clamped);
     }
 
@@ -107,7 +107,7 @@ export default function ManualSkyline() {
   const catDesignWidthPx = Math.round(0.14 * DESIGN_WIDTH);
   const catDesignHeightPx = Math.round(0.375 * DESIGN_HEIGHT);
 
-  const liftPct = vw < 420 ? -8 : vw < 640 ? -5 : -2;
+  const liftPct = vw < 420 ? -4 : vw < 640 ? -3 : -1;
 
   const innerStyle = {
     width: `${DESIGN_WIDTH}px`,
@@ -157,7 +157,7 @@ export default function ManualSkyline() {
       </div>
 
       {/* inner design container */}
-      <div className="absolute bottom-10 left-1/2 pointer-events-none" style={innerStyle} aria-hidden="true">
+      <div className="absolute bottom-4 left-1/2 pointer-events-none" style={innerStyle} aria-hidden="true">
         {/* buildings */}
         {buildings.map((building, idx) => {
           const hideClass = building.hideOnSmall ? "hidden sm:block" : "";
@@ -173,7 +173,7 @@ export default function ManualSkyline() {
         })}
 
         {/* balcony */}
-        <div className="absolute bottom-[-18rem] sm:bottom-[-12.5rem] md:bottom-[-12.5rem] left-0 right-0 h-[65vh] sm:h-[55vh] md:h-[55vh] z-[55] overflow-hidden pointer-events-none">
+        <div className="absolute bottom-[-240px] sm:bottom-[-160px] md:bottom-[-160px] lg:bottom-[-120px] left-0 right-0 h-[420px] sm:h-[360px] md:h-[360px] z-[55] overflow-hidden pointer-events-none">
           <div className="flex h-full w-full">
             {Array.from({ length: balconyCount }).map((_, i) => (
               <img
@@ -181,7 +181,7 @@ export default function ManualSkyline() {
                 src={balcony}
                 alt=""
                 draggable={false}
-                className="h-full scale-100 sm:scale-100 md:scale-[1.3] lg:scale-[1] w-sm:w-auto pixel-perfect select-none pointer-events-none flex-shrink-0"
+                className="h-full scale-[2] sm:scale-100 md:scale-[1.4] lg:scale-[1.2] w-sm:w-auto pixel-perfect select-none pointer-events-none flex-shrink-0"
               />
             ))}
           </div>
@@ -191,7 +191,7 @@ export default function ManualSkyline() {
         <div
   className="
     absolute left-[28%] bottom-[-14%] sm:bottom-[-4.84%] z-[60]
-    scale-[1.25]           /* base smaller */
+    scale-[1.25]
     sm:scale-1
     md:scale-[1]
     lg:scale-[0.8]
@@ -208,7 +208,7 @@ export default function ManualSkyline() {
 
         {/* Cat - responsive with Tailwind scale */}
         <div
-          className="absolute left-[52%] bottom-[-24%] sm:bottom-[-18%] md:bottom-[-19%] z-[60] scale-[1.5] sm:scale-[1.6] md:scale-[1.7]  lg:scale-[1.5] lg:bottom-[-17%] lg:left-[50%]"
+          className="absolute left-[52%] bottom-[-24%] sm:bottom-[-18%] md:bottom-[-19%] z-[60] scale-[1.4] sm:scale-[1.4] md:scale-[1.7]  lg:scale-[1.5] lg:bottom-[-20%] lg:left-[50%]"
           style={{
             width: `${0.14 * DESIGN_WIDTH}px`,
             height: `${0.375 * DESIGN_HEIGHT}px`,
