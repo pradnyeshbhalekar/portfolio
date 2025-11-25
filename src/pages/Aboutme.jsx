@@ -89,7 +89,7 @@ const AboutMe = () => {
             </a>
 
             <a 
-              href="/resume/resume.pdf" 
+              href="/resume.pdf" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
