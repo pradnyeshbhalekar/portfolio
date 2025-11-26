@@ -3,8 +3,8 @@
     "title": "Passkey",
     "description": "A secure password generator and password manager featuring encryption/decryption and Google authentication for passwordless login.",
     "img": "/projects/passkey.png",
-    "github": "https://github.com/Daksh700/passwordmanager",
-    "live": "",
+    "github": "https://github.com/pradnyeshbhalekar/passkey",
+    "live": "https://passkey-ftx3.onrender.com/",
     "techstack": ["React", "Node.js", "Express", "MongoDB"]
   },
   {
