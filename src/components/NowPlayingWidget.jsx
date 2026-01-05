@@ -7,21 +7,47 @@ export default function NowPlayingWidget() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (!API_BASE_URL) {
-      // console.error("VITE_API_BASE_URL is not defined");
-      return;
-    }
+    if (!API_BASE_URL) return;
 
-    fetch(`${API_BASE_URL}/api/spotify/now-playing`)
-      .then(res => res.json())
-      .then(setData)
-      .catch(console.error);
+    let timeoutId;
+    let attempts = 0;
+    const MAX_ATTEMPTS = 3;
+
+    const fetchNowPlaying = async () => {
+      try {
+        const res = await fetch(
+          `${API_BASE_URL}/api/spotify/now-playing`
+        );
+        const json = await res.json();
+
+        // If track is missing, retry after a short delay
+        if (!json.track && attempts < MAX_ATTEMPTS) {
+          attempts += 1;
+          timeoutId = setTimeout(fetchNowPlaying, 1500);
+          return;
+        }
+
+        setData(json);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchNowPlaying();
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   if (!data) return null;
 
   return (
     <div className="relative w-[360px] h-[360px] flex items-center justify-center">
+
+      {/* Status text */}
+      <div className="absolute top-6 z-30 text-sm font-medium tracking-wide text-slate-300 font-arcade">
+
+        Currently spinning
+      </div>
       
       {/* Soft background focus */}
       <div className="absolute inset-0 flex items-center justify-center">
@@ -64,10 +90,10 @@ export default function NowPlayingWidget() {
 
       {/* Track info */}
       <div className="absolute bottom-6 z-30 text-center pointer-events-none">
-        <div className="text-sm font-semibold tracking-wide max-w-[240px] truncate text-white/90">
+        <div className="text-sm font-semibold tracking-wide max-w-[240px] truncate font-arcade text-white/90">
           {data.track}
         </div>
-        <div className="text-xs text-slate-400 max-w-[240px] truncate">
+        <div className="text-xs text-slate-400 max-w-[260px] font-arcade truncate">
           {data.artist}
         </div>
       </div>
