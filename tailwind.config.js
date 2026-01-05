@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         arcade: ["ARCADE", "sans-serif"],
       },
+      animation: {
+        "spin-slow": "spin 6s linear infinite",
+      },
     },
   },
   plugins: [],
