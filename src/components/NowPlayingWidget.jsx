@@ -8,7 +8,7 @@ export default function NowPlayingWidget() {
 
   useEffect(() => {
     if (!API_BASE_URL) {
-      console.error("VITE_API_BASE_URL is not defined");
+      // console.error("VITE_API_BASE_URL is not defined");
       return;
     }
 
