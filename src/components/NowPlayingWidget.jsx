@@ -63,30 +63,31 @@ export default function NowPlayingWidget() {
       {/* Vinyl disc */}
       <div className="absolute z-10">
         <NowPlayingVinyl
-          isPlaying={data.playing}
+
           size={280}
         />
       </div>
 
       {/* Stepped / pixel album art */}
-      <div className="absolute z-20 flex items-center justify-center">
-        {[0, 8, 16].map((offset, i) => (
-          <div
-            key={i}
-            className="absolute bg-slate-600/40"
-            style={{
-              width: 96 + offset,
-              height: 96 + offset,
-            }}
-          />
-        ))}
+<div className="absolute z-20 flex items-center justify-center animate-spin-slow">
+  {[0, 8, 16].map((offset, i) => (
+    <div
+      key={i}
+      className="absolute bg-slate-600/40"
+      style={{
+        width: 96 + offset,
+        height: 96 + offset,
+      }}
+    />
+  ))}
 
-        <img
-          src={data.image}
-          alt={data.track}
-          className="relative w-24 h-24 object-cover"
-        />
-      </div>
+  <img
+    src={data.image}
+    alt={data.track}
+    className="relative w-24 h-24 object-cover"
+  />
+</div>
+
 
       {/* Track info */}
       <div className="absolute bottom-6 z-30 text-center pointer-events-none">
