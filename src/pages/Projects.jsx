@@ -13,6 +13,21 @@ const Projects = () => {
     setProjects(projectData);
   }, []);
 
+  // Close modal on ESC key press
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === 'Escape' && selectedProject) {
+        setSelectedProject(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [selectedProject]);
+
   return (
     <section id="projects" className="w-full min-h-screen bg-gray-800 text-white flex items-center justify-center px-4 sm:px-6 py-16 relative overflow-hidden">
 
@@ -104,98 +119,106 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modal - Compact Design */}
 {selectedProject && (
   <div
-    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4"
+    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-auto"
     onClick={() => setSelectedProject(null)}
   >
     <div
-      className="bg-gray-800 rounded-xl max-w-4xl w-full max-h-[85vh] overflow-hidden border-4 border-gray-700 shadow-2xl"
+      className="bg-gray-900 rounded-xl max-w-3xl w-full border-2 border-gray-700 shadow-2xl my-4"
       onClick={(e) => e.stopPropagation()}
     >
-      {/* Scrollable Content Wrapper */}
-      <div className="overflow-y-auto max-h-[85vh]">
+      
+      {/* Header with close button */}
+      <div className="relative bg-gray-800 p-4 sm:p-5 rounded-t-xl border-b-2 border-gray-700">
+        <h2 className="font-arcade text-xl sm:text-2xl md:text-3xl text-indigo-300 pr-10">
+          {selectedProject.title}
+        </h2>
+        <button
+          onClick={() => setSelectedProject(null)}
+          className="absolute top-4 right-4 text-white hover:text-red-500 text-3xl leading-none transition-colors"
+        >
+          ×
+        </button>
+      </div>
 
-        {/* Header */}
-        <div className="sticky top-0 bg-gray-900 p-4 sm:p-6 border-b-2 border-gray-700 flex justify-between items-center z-10">
-          <h2 className="font-arcade text-xl sm:text-2xl md:text-3xl text-indigo-300">
-            {selectedProject.title}
-          </h2>
-          <button
-            onClick={() => setSelectedProject(null)}
-            className="text-white hover:text-red-500 text-2xl sm:text-3xl leading-none transition-colors"
-          >
-            ×
-          </button>
-        </div>
+      {/* Content - Two Column Layout */}
+      <div className="p-5 sm:p-6">
+        <div className="grid md:grid-cols-2 gap-6">
+          
+          {/* Left Column - Image */}
+          <div className="flex flex-col justify-center">
+            {selectedProject.img && (
+              <img
+                src={selectedProject.img}
+                alt={selectedProject.title}
+                className="w-full h-64 object-cover rounded-lg border-2 border-gray-700"
+              />
+            )}
+          </div>
 
-        {/* Content */}
-        <div className="p-4 sm:p-6">
-          {selectedProject.img && (
-            <img
-              src={selectedProject.img}
-              alt={selectedProject.title}
-              className="
-                w-full 
-                max-h-[300px]
-                object-contain
-                rounded-lg mb-5 sm:mb-6 border-2 border-gray-700
-              "
-            />
-          )}
+          {/* Right Column - Details */}
+          <div className="flex flex-col justify-between">
+            
+            {/* Description */}
+            <div className="mb-4">
+              <h3 className="text-indigo-300 font-semibold text-sm font-arcade uppercase tracking-wide mb-2">About</h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                {selectedProject.description}
+              </p>
+            </div>
 
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-5 sm:mb-6">
-            {selectedProject.description}
-          </p>
-
-          {/* Tech Stack */}
-          {selectedProject.techstack?.length > 0 && (
-            <div className="mb-5 sm:mb-6">
-              <h3 className="text-indigo-300 font-semibold text-base sm:text-lg mb-2">
-                Tech Stack
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.techstack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="bg-gray-700 text-gray-200 px-3 py-1 rounded-md text-xs sm:text-sm border border-gray-600"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            {/* Tech Stack */}
+            {selectedProject.techstack?.length > 0 && (
+              <div className="mb-4">
+                <h3 className="text-indigo-300 font-semibold text-sm uppercase font-arcade tracking-wide mb-2">
+                  Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.techstack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="bg-gray-700 text-gray-200 px-3 py-1 rounded-md text-xs font-medium border border-gray-600"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Links */}
-          {(selectedProject.github || selectedProject.live) && (
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              {selectedProject.github && (
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-700 hover:bg-gray-600 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors font-semibold text-sm sm:text-base"
-                >
-                  GitHub →
-                </a>
-              )}
+            {/* Links */}
+            {(selectedProject.github || selectedProject.live) && (
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                {selectedProject.github && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2.5 rounded-lg transition-all font-semibold text-sm text-center"
+                  >
+                    GitHub
+                  </a>
+                )}
 
-              {selectedProject.live && (
-                <a
-                  href={selectedProject.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-indigo-500 hover:bg-indigo-400 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors font-semibold text-sm sm:text-base"
-                >
-                  Live Demo →
-                </a>
-              )}
-            </div>
-          )}
+                {selectedProject.live && (
+                  <a
+                    href={selectedProject.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2.5 rounded-lg transition-all font-semibold text-sm text-center"
+                  >
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+
         </div>
       </div>
+
     </div>
   </div>
 )}
