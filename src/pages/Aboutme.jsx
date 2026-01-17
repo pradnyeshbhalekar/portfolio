@@ -8,9 +8,9 @@ import kendrick from "../assets/frames/kendrick.png";
 import blonde from "../assets/frames/blonde.png";
 import starboy from "../assets/frames/starboy.png";
 import NowPlayingWidget from "../components/NowPlayingWidget";
+import CatIdle from "../components/CatIdle";
 
 const AboutMe = () => {
-
   return (
     <section
       id="about"
@@ -21,10 +21,8 @@ const AboutMe = () => {
 
       {/* Container */}
       <div className="w-full max-w-7xl flex flex-col md:flex-row items-start justify-between gap-12 relative z-10">
-
         {/* LEFT — Frames + Character */}
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-
           {/* Frames */}
           <div className="flex gap-6 md:mb-12">
             {[kendrick, blonde, starboy].map((img, i) => (
@@ -44,17 +42,24 @@ const AboutMe = () => {
             ))}
           </div>
 
-          {/* PS5 Gaming Character */}
+          {/* PS5 + Cat SIDE BY SIDE (no overlap) */}
           <div className="w-full flex justify-center mt-8">
-            <div className="scale-[2.5] md:scale-[3.5] lg:scale-[4]">
-              <PS5 />
+            <div className="flex items-end gap-10">
+              {/* PS5 Character */}
+              <div className="scale-[2.5] md:scale-[3.5] lg:scale-[4]">
+                <PS5 />
+              </div>
+
+              {/* Cat chilling on side */}
+                <div className="absolute  translate-y-28 left-24 scale-[1] md:scale-[1.4] opacity-95">
+      <CatIdle />
+    </div>
             </div>
           </div>
         </div>
 
         {/* RIGHT — Text + Contact */}
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-
           {/* Heading */}
           <div className="flex items-center gap-4 mt-4">
             <h1 className="font-arcade text-4xl md:text-5xl leading-none">
@@ -68,8 +73,8 @@ const AboutMe = () => {
             I build applications using React, React Native, Firebase, JavaScript,
             and backend tools like Node & Flask.
             <br />
-            I like taking ideas from scratch and turning them into clean,
-            usable products through consistent iteration.
+            I like taking ideas from scratch and turning them into clean, usable
+            products through consistent iteration.
           </p>
 
           {/* Contact Icons */}
@@ -117,12 +122,10 @@ const AboutMe = () => {
 
           {/* Now Playing Vinyl */}
           <div className="mt-6 flex justify-center opacity-90">
-  <div className="scale-75 origin-center">
-      <NowPlayingWidget />
-  </div>
-</div>
-
-
+            <div className="scale-75 origin-center">
+              <NowPlayingWidget />
+            </div>
+          </div>
         </div>
       </div>
     </section>
