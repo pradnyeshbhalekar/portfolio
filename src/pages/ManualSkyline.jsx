@@ -20,6 +20,13 @@ import b11 from "../assets/buildings/building11.png";
 import b12 from "../assets/buildings/building12.png";
 import b13 from "../assets/buildings/building13.png";
 
+
+// stars
+import star1 from "../assets/stars/star1.png";
+import star2 from "../assets/stars/star2.png";
+import star3 from "../assets/stars/star3.png";
+
+
 import balcony from "../assets/first/balcony-ledge.png";
 
 export default function ManualSkyline() {
@@ -88,6 +95,47 @@ export default function ManualSkyline() {
     { img: b6, classes: "left-[96.43%] bottom-[-6.25%] h-[115.63%]", z: "z-50" },
   ], []);
 
+
+const stars = [
+  // near navbar
+  { img: star2, left: "6%",  top: "4%",  size: 4 },
+  { img: star3, left: "18%", top: "6%",  size: 4 },
+  { img: star1, left: "34%", top: "3%",  size: 5 },
+  { img: star2, left: "52%", top: "5%",  size: 4 },
+  { img: star3, left: "74%", top: "4%",  size: 4 },
+  { img: star1, left: "88%", top: "6%",  size: 5 },
+
+  // upper sky
+  { img: star1, left: "9%",  top: "14%", size: 6 },
+  { img: star2, left: "21%", top: "18%", size: 4 },
+  { img: star3, left: "29%", top: "11%", size: 4 },
+  { img: star1, left: "41%", top: "16%", size: 6 },
+  { img: star2, left: "57%", top: "19%", size: 4 },
+  { img: star3, left: "69%", top: "12%", size: 4 },
+  { img: star1, left: "82%", top: "17%", size: 6 },
+
+  // mid sky
+  { img: star2, left: "5%",  top: "30%", size: 4 },
+  { img: star3, left: "14%", top: "26%", size: 4 },
+  { img: star1, left: "26%", top: "34%", size: 6 },
+  { img: star2, left: "38%", top: "28%", size: 4 },
+  { img: star3, left: "47%", top: "35%", size: 4 },
+  { img: star1, left: "60%", top: "29%", size: 6 },
+  { img: star2, left: "71%", top: "33%", size: 4 },
+  { img: star3, left: "84%", top: "27%", size: 4 },
+
+  // near buildings (still sky)
+  { img: star1, left: "8%",  top: "46%", size: 6 },
+  { img: star2, left: "19%", top: "52%", size: 4 },
+  { img: star3, left: "33%", top: "48%", size: 4 },
+  { img: star1, left: "46%", top: "54%", size: 6 },
+  { img: star2, left: "59%", top: "49%", size: 4 },
+  { img: star3, left: "72%", top: "53%", size: 4 },
+  { img: star1, left: "86%", top: "47%", size: 6 },
+];
+
+
+
   const balconyCount = useMemo(() => Math.ceil(DESIGN_WIDTH / 20), []);
   const humanDesignWidthPx = Math.round(0.24 * DESIGN_WIDTH);
   const humanDesignHeightPx = Math.round(0.55 * DESIGN_HEIGHT);
@@ -106,6 +154,34 @@ export default function ManualSkyline() {
     <>
       <Navbar /> {/* <- rendered here (fixed) */}
       <div className="w-full h-screen overflow-hidden bg-[#272757] relative pt-20"> {/* pt-20 prevents overlap with fixed navbar */}
+
+        {/* stars */}
+{/* stars */}
+<div
+  className="absolute top-0 left-0 right-0 h-[100%] sm:h-[100%] lg:h-[80%] z-[1] pointer-events-none"
+  style={{
+    maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+    WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+  }}
+>
+  {stars.map((star, i) => (
+    <img
+      key={i}
+      src={star.img}
+      alt=""
+      draggable={false}
+      className="absolute pixel-perfect select-none opacity-90"
+      style={{
+        left: star.left,
+        top: star.top,
+        width: `${star.size}px`,
+        height: `${star.size}px`,
+      }}
+    />
+  ))}
+</div>
+
+
         <style>{`
           @keyframes moon-pulse {
             0%, 100% { transform: scale(1); opacity: 0.96; }
@@ -155,7 +231,7 @@ export default function ManualSkyline() {
                 src={building.img}
                 alt=""
                 draggable={false}
-                className={`absolute ${building.classes} ${building.z} w-auto pixel-perfect bottom-5 select-none pointer-events-none sm:w-[12%] ${hideClass}`}
+                className={`absolute ${building.classes} ${building.z} w-auto pixel-perfect bottom-44 sm:bottom-4 md:bottom-4 lg:bottom-2 select-none pointer-events-none sm:w-[12%] ${hideClass}`}
               />
             );
           })}
@@ -220,7 +296,7 @@ export default function ManualSkyline() {
 
           {/* Cat - responsive with Tailwind scale */}
           <div
-            className="absolute left-[60%] bottom-[-32%] sm:bottom-[-32%] md:bottom-[-28%] md:left-[52%] z-[60] scale-[2.5] sm:scale-[2] md:scale-[1.7]  lg:scale-[1.5] lg:bottom-[-20%] lg:left-[50%]"
+            className="absolute left-[60%] bottom-[-38%] sm:bottom-[-45%] md:bottom-[-35%]  md:left-[55%] z-[60] scale-[2.5] sm:scale-[2.5] md:scale-[2] lg:scale-[1.8] lg:bottom-[-28%] lg:left-[52%]"
             style={{
               width: `${0.14 * DESIGN_WIDTH}px`,
               height: `${0.375 * DESIGN_HEIGHT}px`,

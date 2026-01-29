@@ -2,7 +2,7 @@ import React from "react";
 import PS5 from "../components/PS5";
 import NowPlayingVinyl from "../components/NowPlayingVinyl";
 
-import { Mail, FileText, Github, Linkedin } from "lucide-react";
+import { Mail, FileText, Github, Linkedin, Icon, Instagram } from "lucide-react";
 
 import kendrick from "../assets/frames/kendrick.png";
 import blonde from "../assets/frames/blonde.png";
@@ -19,11 +19,11 @@ const AboutMe = () => {
       {/* Floor gradient overlay */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/30" />
 
-      {/* Container */}
+
       <div className="w-full max-w-7xl flex flex-col md:flex-row items-start justify-between gap-12 relative z-10">
-        {/* LEFT — Frames + Character */}
+
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-          {/* Frames */}
+
           <div className="flex gap-6 md:mb-12">
             {[kendrick, blonde, starboy].map((img, i) => (
               <div
@@ -51,7 +51,7 @@ const AboutMe = () => {
               </div>
 
               {/* Cat chilling on side */}
-                <div className="absolute  translate-y-28 left-24 scale-[1] md:scale-[1.4] opacity-95">
+                <div className="absolute translate-y-[4rem] md:translate-y-[6rem] lg:translate-y-[8rem] scale-[1.2] md:scale-[1.4] opacity-95">
       <CatIdle />
     </div>
             </div>
@@ -89,6 +89,11 @@ const AboutMe = () => {
                 href: "/resume.pdf",
                 label: "Resume",
                 Icon: FileText,
+              },
+              {
+                href:"https://www.instagram.com/pradnyesshh/",
+                label:"Instagram",
+                Icon: Instagram
               },
               {
                 href: "https://github.com/pradnyeshbhalekar",
