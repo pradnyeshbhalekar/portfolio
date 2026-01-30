@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import CatIdle from "../components/CatIdle";
 import HumanIdle from "../components/HumanIdle";
 import moon from "../assets/first/moon.png";
-import Navbar from "../components/navbar"; // <- added
+import Navbar from "../components/navbar"; 
 
 // buildings
 import b1  from "../assets/buildings/building1.png";
@@ -152,13 +152,13 @@ const stars = [
 
   return (
     <>
-      <Navbar /> {/* <- rendered here (fixed) */}
-      <div className="w-full h-screen overflow-hidden bg-[#272757] relative pt-20"> {/* pt-20 prevents overlap with fixed navbar */}
+    <Navbar /> 
+<div className="w-full h-screen overflow-hidden bg-[#272757] relative pt-20"> 
 
-        {/* stars */}
+
 {/* stars */}
 <div
-  className="absolute top-0 left-0 right-0 h-[100%] sm:h-[100%] lg:h-[80%] z-[1] pointer-events-none"
+  className="absolute top-0 left-0 right-0 h-[100%] sm:h-[100%] lg:h-[80%] z-1 pointer-events-none"
   style={{
     maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
     WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
@@ -294,7 +294,7 @@ const stars = [
             <HumanIdle fps={8} loop width={humanDesignWidthPx} height={humanDesignHeightPx} />
           </div>
 
-          {/* Cat - responsive with Tailwind scale */}
+
           <div
             className="absolute left-[60%] bottom-[-38%] sm:bottom-[-45%] md:bottom-[-35%]  md:left-[55%] z-[60] scale-[2.5] sm:scale-[2.5] md:scale-[2] lg:scale-[1.8] lg:bottom-[-28%] lg:left-[52%]"
             style={{
