@@ -11,8 +11,8 @@
     "title": "Vibexx",
     "description": "Generates personalized Spotify playlists based on the user’s mood. Detects emotions using webcam image processing and syncs playlists directly to the user’s Spotify account.",
     "img": "/projects/vibexx.png",
-    "github": "https://github.com/pradnyeshbhalekar/vibexx",
-    "live": "",
+    "github": "https://github.com/pradnyeshbhalekar/vibexx-fe",
+    "live": "https://vibexx.onrender.com",
     "techstack": ["Next.js", "Flask"]
   },
   {
