@@ -1,0 +1,22 @@
+[
+  {
+    "category": "Programming Languages",
+    "skills": ["Python", "JavaScript", "TypeScript", "SQL"]
+  },
+  {
+    "category": "Technologies & Frameworks",
+    "skills": ["React.js", "Node.js", "Express.js", "Flask", "Django", "Tailwind CSS", "REST APIs", "FastAPI", "Selenium"]
+  },
+  {
+    "category": "Libraries & Databases",
+    "skills": ["Redux", "Axios", "Mongoose", "Chart.js", "Pandas", "NumPy", "Material-UI", "MySQL", "PostgreSQL", "MongoDB", "Firebase", "SQLite", "Supabase", "Redis"]
+  },
+  {
+    "category": "Tools & Platforms",
+    "skills": ["Git", "GitHub", "VS Code", "Postman", "AWS", "npm/Yarn", "Vercel", "MongoDB Atlas", "Jira"]
+  },
+  {
+    "category": "Additional Skills",
+    "skills": ["Linux", "Debugging", "API Integration", "Deployment", "Version Control", "Web Scraping", "Testing"]
+  }
+]

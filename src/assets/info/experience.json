@@ -1,15 +1,36 @@
 [
-    {
-        "_id": "69242d0794d6cbfd35ffae4c",
-        "company": "Thworks",
-        "description": "Developed production-ready systems across mobile and web. Built a React Native app from scratch, created a Next.js dashboard, and implemented backend services using Flask and Node.js. Worked on authentication, API design, database integration, and overall performance improvements for real users.",
-        "duration": "Dec 2024 – May 2025 (6 months)",
-        "role": "Software Developer Intern",
-        "techstack": [
-            "React Native",
-            "Next.js",
-            "Flask",
-            "Node.js"
-        ]
-    }
+  {
+    "_id": "69242d0794d6cbfd35ffae4c",
+    "company": "Thworks",
+    "role": "Software Developer Intern",
+    "duration": "Dec 2024 – May 2025 (6 months)",
+    "description": "Developed production-ready mobile and web applications used by real users. Built a React Native mobile application from scratch and a Next.js web dashboard. Designed, developed, and maintained backend services using Flask and Node.js with PostgreSQL, including REST API development, authentication, and database integration. Implemented Python-based web scraping pipelines for data collection and processing. Worked on backend performance optimization, system reliability, and API efficiency.",
+    "techstack": [
+      "React Native",
+      "Next.js",
+      "Flask",
+      "Node.js",
+      "PostgreSQL",
+      "Python",
+      "REST APIs",
+      "Web Scraping"
+    ]
+  },
+  {
+    "_id": "69242d0794d6cbfd35ffa222c",
+    "company": "RIIDL",
+    "role": "Software Developer Intern",
+    "duration": "Feb 2025 – May 2025 (Ongoing)",
+    "description": "Building and maintaining backend services for internal and user-facing applications. Designed and developed REST APIs using Express.js and Supabase, handling authentication, database operations, and business logic. Worked with Supabase for managed PostgreSQL, authentication, and data storage. Contributed to frontend development using React and Next.js by implementing features, fixing bugs, and improving application workflows. Collaborated with team members to ensure scalable architecture, clean code, and smooth integration between frontend and backend systems.",
+    "techstack": [
+      "React",
+      "Next.js",
+      "Express.js",
+      "Supabase",
+      "PostgreSQL",
+      "REST APIs",
+      "JavaScript",
+      "Backend Development"
+    ]
+  }
 ]
