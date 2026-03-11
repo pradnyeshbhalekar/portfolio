@@ -18,7 +18,7 @@
   },
   {
     "_id": "69242d0794d6cbfd35ffa222c",
-    "company": "RIIDL",
+    "company": "Riidl",
     "role": "Software Developer Intern",
     "duration": "Feb 2025 – May 2025 (Ongoing)",
     "description": "Building and maintaining backend services for internal and user-facing applications. Designed and developed REST APIs using Express.js and Supabase, handling authentication, database operations, and business logic. Worked with Supabase for managed PostgreSQL, authentication, and data storage. Contributed to frontend development using React and Next.js by implementing features, fixing bugs, and improving application workflows. Collaborated with team members to ensure scalable architecture, clean code, and smooth integration between frontend and backend systems.",
