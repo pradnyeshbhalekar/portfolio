@@ -1,5 +1,14 @@
 [
   {
+    "title": "LoopLearn",
+    "description": "LoopLearn delivers daily bite-sized learning for developers, covering topics from cybersecurity, frontend, and backend with concept explanations and real-world case studies.",
+    "img": "/projects/looplearn.png",
+    "github": "https://github.com/pradnyeshbhalekar/looplearn-fe",
+    "github2": "https://github.com/pradnyeshbhalekar/looplearn-be",
+    "live": "https://looplearn-nine.vercel.app",
+    "techstack": ["Python", "React"]
+  },
+  {
     "title": "Passkey",
     "description": "A secure password generator and password manager featuring encryption/decryption and Google authentication for passwordless login.",
     "img": "/projects/passkey.png",

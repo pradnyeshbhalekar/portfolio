@@ -11,15 +11,25 @@ const Projects = () => {
     setProjects(projectData);
   }, []);
 
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
   return (
     <section id="projects" className="w-full min-h-screen bg-[#111827] text-white px-6 py-20 relative overflow-hidden">
-      
+
       {/* Floor */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/20 z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-12">
-          
+
           {/* LEFT — Projects Grid */}
           <div className="w-full lg:w-3/5 xl:w-2/3 lg:py-10">
             <h1 className="font-arcade text-4xl md:text-6xl text-indigo-400 mb-12 text-center lg:text-left">
@@ -48,7 +58,7 @@ const Projects = () => {
                       {project.description}
                     </p>
                     <div className="mt-4 flex items-center text-xs font-arcade text-indigo-500 opacity-0 group-hover:opacity-100 transition-all">
-                      OPEN_FILE →
+                      OPEN FILE →
                     </div>
                   </div>
                 </div>
@@ -57,7 +67,7 @@ const Projects = () => {
           </div>
 
           {/* RIGHT — Sticky Character */}
-          <div className="w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-0 flex items-center justify-center">
+          <div className="w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-32 flex items-center justify-center">
             <div className="relative">
               <div className="transform scale-[2.5] md:scale-[3] lg:scale-[3.2]">
                 <Laptop />
@@ -74,9 +84,9 @@ const Projects = () => {
       {/* Modal - Kept the sleek side-by-side design */}
       {selectedProject && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedProject(null)}>
-          <div className="bg-[#111827] border border-gray-700 w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl flex flex-col md:flex-row" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#111827] border border-gray-700 w-full max-w-6xl max-h-[90vh] overflow-hidden rounded-2xl flex flex-col md:flex-row shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="w-full md:w-1/2 bg-black">
-               <img src={selectedProject.img} className="w-full h-full object-cover" alt="Project" />
+              <img src={selectedProject.img} className="w-full h-full object-cover" alt="Project" />
             </div>
             <div className="w-full md:w-1/2 p-8 overflow-y-auto">
               <h2 className="text-2xl font-arcade text-indigo-400 mb-4">{selectedProject.title}</h2>

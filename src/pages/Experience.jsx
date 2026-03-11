@@ -22,7 +22,7 @@ const Experience = () => {
         <div className="flex flex-col lg:flex-row items-start gap-12">
           
           {/* LEFT — Sticky & Vertically Centered Character Scene */}
-          <div className="w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-0 flex items-center justify-center py-10 lg:py-0">
+          <div className="w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-10 lg:py-0">
             <div className="relative">
               {/* Laptop */}
               <div className="transform scale-[2.2] sm:scale-[2.8] md:scale-[3.2] lg:scale-[3]">
