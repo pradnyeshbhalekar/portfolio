@@ -67,15 +67,16 @@ const AboutMe = () => {
             </h1>
           </div>
 
-          <p className="text-base md:text-lg leading-relaxed mb-8 mt-6">
-            Hello! I&apos;m <span className="font-bold">Pradnyesh Bhalekar</span>.
-            <br />
-            I build applications using React, React Native, Firebase, JavaScript,
-            and backend tools like Node & Flask.
-            <br />
-            I like taking ideas from scratch and turning them into clean, usable
-            products through consistent iteration.
-          </p>
+<p className="text-base md:text-lg leading-relaxed mb-8 mt-6">
+  Hi, I'm <span className="font-bold">Pradnyesh Bhalekar</span>, a developer who enjoys
+  building things from zero to a usable product.
+  <br />
+  I spend most of my time experimenting with ideas, developing apps, and
+  refining them through constant iteration.
+  <br />
+  I'm interested in creating practical tools and learning platforms that
+  solve real problems rather than just showcasing technology.
+</p>
 
           {/* Contact Icons */}
           <div className="flex gap-6 mt-2">
