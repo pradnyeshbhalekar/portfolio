@@ -74,7 +74,7 @@ const AboutMe = () => {
   I spend most of my time experimenting with ideas, developing apps, and
   refining them through constant iteration.
   <br />
-  I'm interested in creating practical tools and learning platforms that
+  I'm interested in creating practical tools and platforms that
   solve real problems rather than just showcasing technology.
 </p>
 
