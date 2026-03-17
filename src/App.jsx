@@ -7,7 +7,8 @@ import Projects from "./pages/Projects";
 import Experience from "./pages/Experience";
 
 
-function App(){
+
+function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -26,10 +27,11 @@ function App(){
   }, []);
   return (
     <div>
-      <ManualSkyline  />
-      <AboutMe/>
-      <Projects/>
-      <Experience/>
+      <ManualSkyline />
+      <AboutMe />
+      <Projects />
+      <Experience />
+
     </div>
   );
 }

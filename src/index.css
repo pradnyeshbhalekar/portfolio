@@ -20,7 +20,17 @@ html.lenis {
 }
 
 
-@theme{
-  --font-arcade : ARCADE
+@theme {
+  --font-arcade: ARCADE;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
