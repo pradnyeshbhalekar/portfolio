@@ -4,37 +4,51 @@ import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
 import projectData from "../assets/info/project.json";
 
+const AUTO_TIME = 5000;
+
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setProjects(projectData);
   }, []);
 
   const nextProject = useCallback(() => {
-    setActiveIndex((prev) =>
-      prev === projects.length - 1 ? 0 : prev + 1
-    );
+    setActiveIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
     setShowDetails(false);
+    setProgress(0);
   }, [projects.length]);
 
   const prevProject = () => {
-    setActiveIndex((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
-    );
+    setActiveIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
     setShowDetails(false);
+    setProgress(0);
   };
 
+  // Autoplay Logic
   useEffect(() => {
     if (isPaused || projects.length === 0) return;
     const interval = setInterval(() => {
       nextProject();
-    }, 5000);
+    }, AUTO_TIME);
     return () => clearInterval(interval);
   }, [isPaused, nextProject, projects.length]);
+
+  // Super Smooth Timeline Logic (60FPS)
+  useEffect(() => {
+    if (isPaused || projects.length === 0) return;
+
+    const step = 100 / (AUTO_TIME / 16);
+    const timer = setInterval(() => {
+      setProgress((prev) => (prev >= 100 ? 0 : prev + step));
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [activeIndex, isPaused, projects.length]);
 
   if (projects.length === 0) return null;
 
@@ -42,7 +56,6 @@ const Projects = () => {
 
   return (
     <section className="w-full min-h-screen bg-[#111827] text-white px-2 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center lg:items-center gap-10 lg:gap-16">
 
@@ -57,42 +70,47 @@ const Projects = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onClick={() => setShowDetails(!showDetails)}
-              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 cursor-pointer aspect-[16/9]"
+              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer aspect-[16/9] shadow-2xl"
             >
               {/* IMAGE */}
               <div className="absolute inset-0">
                 <img
                   src={activeProject.img}
                   alt={activeProject.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-opacity duration-500"
                 />
 
                 {/* STRONGER OVERLAY */}
-                <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${showDetails
-                    ? "bg-gradient-to-t from-black via-[#111827]/95 to-transparent"
-                    : "bg-gradient-to-t from-black/80 via-transparent to-transparent"
-                  }`} />
+                <div
+                  className={`absolute inset-0 pointer-events-none transition-all duration-700 ${showDetails
+                      ? "bg-gradient-to-t from-black via-[#111827]/95 to-transparent"
+                      : "bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                    }`}
+                />
               </div>
 
-              {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-end sm:justify-center px-4 sm:px-6 md:px-14 pb-6 sm:pb-0 z-20">
-
-                <h2 className={`font-arcade text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-all duration-500 ${showDetails
-                    ? "text-xl sm:text-2xl md:text-4xl mb-2"
-                    : "text-xl sm:text-3xl md:text-6xl"
-                  }`}>
+              {/* CONTENT - Fixed to bottom with justify-end */}
+              <div className="absolute inset-0 flex flex-col justify-end px-4 sm:px-8 md:px-10 pb-6 sm:pb-8 z-20 pointer-events-none">
+                <h2
+                  className={`font-arcade text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-all duration-500 ${showDetails
+                      ? "text-xl sm:text-2xl md:text-4xl mb-2"
+                      : "text-xl sm:text-3xl md:text-5xl"
+                    }`}
+                >
                   {activeProject.title}
                 </h2>
 
-                <div className={`transition-all duration-700 overflow-hidden ${showDetails
-                    ? "max-h-[500px] opacity-100 mt-2"
-                    : "max-h-0 opacity-0"
-                  }`}>
-                  <p className="text-gray-200 text-xs sm:text-sm md:text-lg mb-4 leading-relaxed max-w-full sm:max-w-2xl">
+                <div
+                  className={`transition-all duration-700 overflow-hidden pointer-events-auto ${showDetails
+                      ? "max-h-[500px] opacity-100 mt-2"
+                      : "max-h-0 opacity-0"
+                    }`}
+                >
+                  <p className="text-gray-200 text-xs sm:text-sm md:text-base mb-4 leading-relaxed max-w-full sm:max-w-2xl">
                     {activeProject.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-5">
                     {activeProject.techstack?.map((tech, i) => (
                       <span
                         key={i}
@@ -103,14 +121,14 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* FIXED BUTTONS */}
+                  {/* FIXED BUTTONS - Arcade Font Applied */}
                   <div className="flex gap-3">
                     {activeProject.live && (
                       <a
                         href={activeProject.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg"
+                        className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs sm:text-sm font-arcade tracking-widest backdrop-blur-md shadow-lg transition-colors"
                       >
                         LIVE
                       </a>
@@ -120,7 +138,7 @@ const Projects = () => {
                         href={activeProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 bg-black/60 hover:bg-black/80 text-white rounded-lg text-xs sm:text-sm font-semibold backdrop-blur-md border border-white/10"
+                        className="px-5 py-2.5 bg-black/60 hover:bg-black/80 text-white rounded-lg text-xs sm:text-sm font-arcade tracking-widest backdrop-blur-md border border-white/10 transition-colors"
                       >
                         CODE
                       </a>
@@ -129,13 +147,13 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* BUTTONS */}
+              {/* NAVIGATION BUTTONS */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   prevProject();
                 }}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600 transition-colors opacity-0 group-hover:opacity-100"
               >
                 <ChevronLeft size={20} />
               </button>
@@ -145,31 +163,41 @@ const Projects = () => {
                   e.stopPropagation();
                   nextProject();
                 }}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600 transition-colors opacity-0 group-hover:opacity-100"
               >
                 <ChevronRight size={20} />
               </button>
             </div>
 
             {/* THUMBNAILS */}
-            <div className="mt-5 flex gap-2 overflow-x-auto no-scrollbar pb-3">
+            <div className="mt-5 flex gap-3 overflow-x-auto no-scrollbar pb-3">
               {projects.map((project, index) => (
                 <button
                   key={index}
                   onClick={() => {
                     setActiveIndex(index);
                     setShowDetails(false);
+                    setProgress(0);
                   }}
-                  className={`flex-shrink-0 w-20 aspect-video rounded-lg overflow-hidden border ${activeIndex === index
-                      ? "border-indigo-500 scale-105"
-                      : "border-transparent opacity-50"
+                  className={`relative flex-shrink-0 w-24 sm:w-28 aspect-video rounded-lg overflow-hidden border transition-all duration-300 ${activeIndex === index
+                      ? "border-gray-500 scale-105 shadow-lg shadow-white/5"
+                      : "border-transparent opacity-40 hover:opacity-80 grayscale hover:grayscale-0"
                     }`}
                 >
+                  {/* Thumbnail Image */}
                   <img
                     src={project.img}
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
+
+                  {/* FULL IMAGE TIMELINE HIGHLIGHT - Darker Gray */}
+                  {activeIndex === index && (
+                    <div
+                      className="absolute top-0 left-0 h-full bg-gray-800/70 pointer-events-none transition-none"
+                      style={{ width: `${progress}%` }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
