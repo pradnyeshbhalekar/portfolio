@@ -42,7 +42,7 @@ const Projects = () => {
 
   return (
     <section className="w-full min-h-screen bg-[#111827] text-white px-2 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
-      {/* Floor */}
+      
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-black/20 z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -54,32 +54,33 @@ const Projects = () => {
               PROJECTS
             </h1>
 
-            {/* Main Display */}
+            {/* MAIN DISPLAY */}
             <div
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onClick={() => setShowDetails(!showDetails)}
               className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 cursor-pointer aspect-[16/9]"
             >
-              <div key={activeIndex} className="absolute inset-0 transition-opacity duration-1000">
+              {/* IMAGE */}
+              <div className="absolute inset-0">
                 <img
                   src={activeProject.img}
                   alt={activeProject.title}
                   className="w-full h-full object-cover"
                 />
 
-                {/* Overlay */}
-                <div className={`absolute inset-0 transition-all duration-700 ${
+                {/* OVERLAYS (non-clickable now) */}
+                <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
                   showDetails
                     ? "bg-gradient-to-t from-[#111827] via-[#111827]/90 to-transparent"
                     : "bg-gradient-to-r from-[#111827] via-[#111827]/40 to-transparent opacity-80"
                 }`} />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent opacity-60"></div>
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#111827] via-transparent to-transparent opacity-60"></div>
               </div>
 
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 md:px-14 z-10">
+              {/* CONTENT */}
+              <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 md:px-14 z-20">
                 <h2 className={`font-arcade transition-all duration-500 ${
                   showDetails
                     ? "text-2xl sm:text-3xl md:text-4xl mb-3"
@@ -133,24 +134,32 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Arrows ALWAYS visible */}
+              {/* BUTTONS (FIXED) */}
               <button
-                onClick={(e) => { e.stopPropagation(); prevProject(); }}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 hover:bg-indigo-600 transition opacity-100"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  prevProject();
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600 transition"
               >
                 <ChevronLeft size={20} />
               </button>
 
               <button
-                onClick={(e) => { e.stopPropagation(); nextProject(); }}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 hover:bg-indigo-600 transition opacity-100"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  nextProject();
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600 transition"
               >
                 <ChevronRight size={20} />
               </button>
             </div>
 
-            {/* Thumbnails */}
-            <div className="mt-5 sm:mt-6 flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar pb-3 sm:pb-4 snap-x">
+            {/* THUMBNAILS */}
+            <div className="mt-5 sm:mt-6 flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar pb-3 sm:pb-4">
               {projects.map((project, index) => (
                 <button
                   key={index}
