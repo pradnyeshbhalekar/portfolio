@@ -42,8 +42,6 @@ const Projects = () => {
 
   return (
     <section className="w-full min-h-screen bg-[#111827] text-white px-2 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
-      
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-black/20 z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center lg:items-center gap-10 lg:gap-16">
@@ -69,53 +67,50 @@ const Projects = () => {
                   className="w-full h-full object-cover"
                 />
 
-                {/* OVERLAYS (non-clickable now) */}
-                <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
-                  showDetails
-                    ? "bg-gradient-to-t from-[#111827] via-[#111827]/90 to-transparent"
-                    : "bg-gradient-to-r from-[#111827] via-[#111827]/40 to-transparent opacity-80"
-                }`} />
-
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#111827] via-transparent to-transparent opacity-60"></div>
+                {/* STRONGER OVERLAY */}
+                <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${showDetails
+                    ? "bg-gradient-to-t from-black via-[#111827]/95 to-transparent"
+                    : "bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                  }`} />
               </div>
 
               {/* CONTENT */}
-              <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 md:px-14 z-20">
-                <h2 className={`font-arcade transition-all duration-500 ${
-                  showDetails
-                    ? "text-2xl sm:text-3xl md:text-4xl mb-3"
-                    : "text-2xl sm:text-3xl md:text-6xl"
-                }`}>
+              <div className="absolute inset-0 flex flex-col justify-end sm:justify-center px-4 sm:px-6 md:px-14 pb-6 sm:pb-0 z-20">
+
+                <h2 className={`font-arcade text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-all duration-500 ${showDetails
+                    ? "text-xl sm:text-2xl md:text-4xl mb-2"
+                    : "text-xl sm:text-3xl md:text-6xl"
+                  }`}>
                   {activeProject.title}
                 </h2>
 
-                <div className={`transition-all duration-700 overflow-hidden ${
-                  showDetails
+                <div className={`transition-all duration-700 overflow-hidden ${showDetails
                     ? "max-h-[500px] opacity-100 mt-2"
                     : "max-h-0 opacity-0"
-                }`}>
-                  <p className="text-gray-300 text-xs sm:text-sm md:text-lg mb-4 sm:mb-6 leading-relaxed max-w-full sm:max-w-2xl">
+                  }`}>
+                  <p className="text-gray-200 text-xs sm:text-sm md:text-lg mb-4 leading-relaxed max-w-full sm:max-w-2xl">
                     {activeProject.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {activeProject.techstack?.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-2 py-1 sm:px-3 sm:py-1 bg-indigo-500/10 text-[10px] sm:text-xs text-indigo-300 border border-indigo-500/20 rounded-full uppercase"
+                        className="px-2 py-1 text-[10px] sm:text-xs bg-indigo-500/20 text-indigo-200 border border-indigo-400/20 rounded-full font-arcade tracking-wider"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex gap-3 sm:gap-4">
+                  {/* FIXED BUTTONS */}
+                  <div className="flex gap-3">
                     {activeProject.live && (
                       <a
                         href={activeProject.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 sm:px-6 sm:py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-xs sm:text-sm font-bold"
+                        className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg"
                       >
                         LIVE
                       </a>
@@ -125,7 +120,7 @@ const Projects = () => {
                         href={activeProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 sm:px-6 sm:py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-xs sm:text-sm font-bold"
+                        className="px-4 py-2 bg-black/60 hover:bg-black/80 text-white rounded-lg text-xs sm:text-sm font-semibold backdrop-blur-md border border-white/10"
                       >
                         CODE
                       </a>
@@ -134,14 +129,13 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* BUTTONS (FIXED) */}
+              {/* BUTTONS */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  e.preventDefault();
                   prevProject();
                 }}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600 transition"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600"
               >
                 <ChevronLeft size={20} />
               </button>
@@ -149,17 +143,16 @@ const Projects = () => {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  e.preventDefault();
                   nextProject();
                 }}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600 transition"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/50 hover:bg-indigo-600"
               >
                 <ChevronRight size={20} />
               </button>
             </div>
 
             {/* THUMBNAILS */}
-            <div className="mt-5 sm:mt-6 flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar pb-3 sm:pb-4">
+            <div className="mt-5 flex gap-2 overflow-x-auto no-scrollbar pb-3">
               {projects.map((project, index) => (
                 <button
                   key={index}
@@ -167,11 +160,10 @@ const Projects = () => {
                     setActiveIndex(index);
                     setShowDetails(false);
                   }}
-                  className={`flex-shrink-0 w-20 md:w-24 aspect-video rounded-lg sm:rounded-xl overflow-hidden border transition ${
-                    activeIndex === index
+                  className={`flex-shrink-0 w-20 aspect-video rounded-lg overflow-hidden border ${activeIndex === index
                       ? "border-indigo-500 scale-105"
-                      : "border-transparent opacity-50 hover:opacity-100"
-                  }`}
+                      : "border-transparent opacity-50"
+                    }`}
                 >
                   <img
                     src={project.img}
