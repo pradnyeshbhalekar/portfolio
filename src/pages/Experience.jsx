@@ -20,7 +20,7 @@ const Experience = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-12">
-          
+
           {/* LEFT — Sticky & Vertically Centered Character Scene */}
           <div className="w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-10 lg:py-0">
             <div className="relative">
@@ -30,7 +30,7 @@ const Experience = () => {
               </div>
 
               {/* Cat beside laptop */}
-              <div className="absolute -right-12 sm:-right-16 md:-right-20 lg:-right-16 bottom-0 transform scale-75 lg:scale-90">
+              <div className="absolute -right-12 sm:-right-16 md:-right-20 lg:-right-16 bottom-0 md:top-2 transform scale-75 md:scale-[1] lg:scale-90">
                 <CatSleep />
               </div>
             </div>

@@ -11,7 +11,7 @@ const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  
+
   const progressRef = React.useRef(0);
   const progressElementsRef = React.useRef([]);
 
@@ -48,7 +48,7 @@ const Projects = () => {
     const timer = setInterval(() => {
       progressRef.current += step;
       if (progressRef.current >= 100) progressRef.current = 0;
-      
+
       const activeEl = progressElementsRef.current[activeIndex];
       if (activeEl) {
         activeEl.style.width = `${progressRef.current}%`;
@@ -91,8 +91,8 @@ const Projects = () => {
                 {/* STRONGER OVERLAY */}
                 <div
                   className={`absolute inset-0 pointer-events-none transition-all duration-700 ${showDetails
-                      ? "bg-gradient-to-t from-black via-[#111827]/95 to-transparent"
-                      : "bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                    ? "bg-gradient-to-t from-black via-[#111827]/95 to-transparent"
+                    : "bg-gradient-to-t from-black/80 via-transparent to-transparent"
                     }`}
                 />
               </div>
@@ -101,8 +101,8 @@ const Projects = () => {
               <div className="absolute inset-0 flex flex-col justify-end px-4 sm:px-8 md:px-10 pb-6 sm:pb-8 z-20 pointer-events-none">
                 <h2
                   className={`font-arcade text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-all duration-500 ${showDetails
-                      ? "text-xl sm:text-2xl md:text-4xl mb-2"
-                      : "text-xl sm:text-3xl md:text-5xl"
+                    ? "text-xl sm:text-2xl md:text-4xl mb-2"
+                    : "text-xl sm:text-3xl md:text-5xl"
                     }`}
                 >
                   {activeProject.title}
@@ -110,8 +110,8 @@ const Projects = () => {
 
                 <div
                   className={`transition-all duration-700 overflow-hidden pointer-events-auto ${showDetails
-                      ? "max-h-[500px] opacity-100 mt-2"
-                      : "max-h-0 opacity-0"
+                    ? "max-h-[500px] opacity-100 mt-2"
+                    : "max-h-0 opacity-0"
                     }`}
                 >
                   <p className="text-gray-200 text-xs sm:text-sm md:text-base mb-4 leading-relaxed max-w-full sm:max-w-2xl">
@@ -188,8 +188,8 @@ const Projects = () => {
                     progressRef.current = 0;
                   }}
                   className={`relative flex-shrink-0 w-24 sm:w-28 aspect-video rounded-lg overflow-hidden border transition-all duration-300 ${activeIndex === index
-                      ? "border-gray-500 scale-105 shadow-lg shadow-white/5"
-                      : "border-transparent opacity-40 hover:opacity-80 grayscale hover:grayscale-0"
+                    ? "border-gray-500 scale-105 shadow-lg shadow-white/5"
+                    : "border-transparent opacity-40 hover:opacity-80 grayscale hover:grayscale-0"
                     }`}
                 >
                   {/* Thumbnail Image */}
@@ -218,7 +218,7 @@ const Projects = () => {
               <div className="transform scale-[1.8] sm:scale-[2.2] md:scale-[2.8] lg:scale-[3]">
                 <Laptop />
               </div>
-              <div className="absolute -right-8 sm:-right-12 bottom-0">
+              <div className="absolute -right-8 sm:-right-12 bottom-0 md:top-2 scale-75 sm:scale-1 md:scale-[1] lg:scale-90 lg:-right-16">
                 <CatSleep />
               </div>
             </div>
