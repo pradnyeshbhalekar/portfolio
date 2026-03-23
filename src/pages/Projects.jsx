@@ -11,7 +11,9 @@ const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [progress, setProgress] = useState(0);
+  
+  const progressRef = React.useRef(0);
+  const progressElementsRef = React.useRef([]);
 
   useEffect(() => {
     setProjects(projectData);
@@ -20,13 +22,13 @@ const Projects = () => {
   const nextProject = useCallback(() => {
     setActiveIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
     setShowDetails(false);
-    setProgress(0);
+    progressRef.current = 0;
   }, [projects.length]);
 
   const prevProject = () => {
     setActiveIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
     setShowDetails(false);
-    setProgress(0);
+    progressRef.current = 0;
   };
 
   // Autoplay Logic
@@ -38,13 +40,19 @@ const Projects = () => {
     return () => clearInterval(interval);
   }, [isPaused, nextProject, projects.length]);
 
-  // Super Smooth Timeline Logic (60FPS)
+  // Super Smooth Timeline Logic (60FPS) via direct DOM manipulation to avoid re-renders
   useEffect(() => {
     if (isPaused || projects.length === 0) return;
 
     const step = 100 / (AUTO_TIME / 16);
     const timer = setInterval(() => {
-      setProgress((prev) => (prev >= 100 ? 0 : prev + step));
+      progressRef.current += step;
+      if (progressRef.current >= 100) progressRef.current = 0;
+      
+      const activeEl = progressElementsRef.current[activeIndex];
+      if (activeEl) {
+        activeEl.style.width = `${progressRef.current}%`;
+      }
     }, 16);
 
     return () => clearInterval(timer);
@@ -70,7 +78,7 @@ const Projects = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onClick={() => setShowDetails(!showDetails)}
-              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer aspect-[16/9] shadow-2xl"
+              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer min-h-[430px] sm:min-h-0 sm:aspect-[16/9] shadow-2xl"
             >
               {/* IMAGE */}
               <div className="absolute inset-0">
@@ -177,7 +185,7 @@ const Projects = () => {
                   onClick={() => {
                     setActiveIndex(index);
                     setShowDetails(false);
-                    setProgress(0);
+                    progressRef.current = 0;
                   }}
                   className={`relative flex-shrink-0 w-24 sm:w-28 aspect-video rounded-lg overflow-hidden border transition-all duration-300 ${activeIndex === index
                       ? "border-gray-500 scale-105 shadow-lg shadow-white/5"
@@ -194,8 +202,9 @@ const Projects = () => {
                   {/* FULL IMAGE TIMELINE HIGHLIGHT - Darker Gray */}
                   {activeIndex === index && (
                     <div
+                      ref={(el) => (progressElementsRef.current[index] = el)}
                       className="absolute top-0 left-0 h-full bg-gray-800/70 pointer-events-none transition-none"
-                      style={{ width: `${progress}%` }}
+                      style={{ width: `${progressRef.current}%` }}
                     />
                   )}
                 </button>
