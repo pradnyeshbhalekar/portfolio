@@ -3,18 +3,18 @@ import React, { useEffect, useMemo, useState } from "react";
 import CatIdle from "../components/CatIdle";
 import HumanIdle from "../components/HumanIdle";
 import moon from "../assets/first/moon.png";
-import Navbar from "../components/navbar"; 
+import Navbar from "../components/navbar";
 
 // buildings
-import b1  from "../assets/buildings/building1.png";
-import b2  from "../assets/buildings/building2.png";
-import b3  from "../assets/buildings/building3.png";
-import b4  from "../assets/buildings/building4.png";
-import b5  from "../assets/buildings/building5.png";
-import b6  from "../assets/buildings/building6.png";
-import b7  from "../assets/buildings/building7.png";
-import b8  from "../assets/buildings/building8.png";
-import b9  from "../assets/buildings/building9.png";
+import b1 from "../assets/buildings/building1.png";
+import b2 from "../assets/buildings/building2.png";
+import b3 from "../assets/buildings/building3.png";
+import b4 from "../assets/buildings/building4.png";
+import b5 from "../assets/buildings/building5.png";
+import b6 from "../assets/buildings/building6.png";
+import b7 from "../assets/buildings/building7.png";
+import b8 from "../assets/buildings/building8.png";
+import b9 from "../assets/buildings/building9.png";
 import b10 from "../assets/buildings/building10.png";
 import b11 from "../assets/buildings/building11.png";
 import b12 from "../assets/buildings/building12.png";
@@ -46,7 +46,8 @@ export default function ManualSkyline() {
 
       const scaleByWidth = W / DESIGN_WIDTH;
       let targetPortion = 0.25;
-      if (W < 420) targetPortion = 0.32;
+      if (W < 420) targetPortion = 0.55; // Significantly larger on small mobile
+      else if (W < 640) targetPortion = 0.45; // Larger on large mobile/small tablet
       const scaleByHeightTarget = (H * targetPortion) / DESIGN_HEIGHT;
       const finalScale = Math.max(scaleByWidth, scaleByHeightTarget);
       const clamped = Math.max(0.3, Math.min(finalScale, 3));
@@ -96,43 +97,43 @@ export default function ManualSkyline() {
   ], []);
 
 
-const stars = [
-  // near navbar
-  { img: star2, left: "6%",  top: "4%",  size: 4 },
-  { img: star3, left: "18%", top: "6%",  size: 4 },
-  { img: star1, left: "34%", top: "3%",  size: 5 },
-  { img: star2, left: "52%", top: "5%",  size: 4 },
-  { img: star3, left: "74%", top: "4%",  size: 4 },
-  { img: star1, left: "88%", top: "6%",  size: 5 },
+  const stars = [
+    // near navbar
+    { img: star2, left: "6%", top: "4%", size: 4 },
+    { img: star3, left: "18%", top: "6%", size: 4 },
+    { img: star1, left: "34%", top: "3%", size: 5 },
+    { img: star2, left: "52%", top: "5%", size: 4 },
+    { img: star3, left: "74%", top: "4%", size: 4 },
+    { img: star1, left: "88%", top: "6%", size: 5 },
 
-  // upper sky
-  { img: star1, left: "9%",  top: "14%", size: 6 },
-  { img: star2, left: "21%", top: "18%", size: 4 },
-  { img: star3, left: "29%", top: "11%", size: 4 },
-  { img: star1, left: "41%", top: "16%", size: 6 },
-  { img: star2, left: "57%", top: "19%", size: 4 },
-  { img: star3, left: "69%", top: "12%", size: 4 },
-  { img: star1, left: "82%", top: "17%", size: 6 },
+    // upper sky
+    { img: star1, left: "9%", top: "14%", size: 6 },
+    { img: star2, left: "21%", top: "18%", size: 4 },
+    { img: star3, left: "29%", top: "11%", size: 4 },
+    { img: star1, left: "41%", top: "16%", size: 6 },
+    { img: star2, left: "57%", top: "19%", size: 4 },
+    { img: star3, left: "69%", top: "12%", size: 4 },
+    { img: star1, left: "82%", top: "17%", size: 6 },
 
-  // mid sky
-  { img: star2, left: "5%",  top: "30%", size: 4 },
-  { img: star3, left: "14%", top: "26%", size: 4 },
-  { img: star1, left: "26%", top: "34%", size: 6 },
-  { img: star2, left: "38%", top: "28%", size: 4 },
-  { img: star3, left: "47%", top: "35%", size: 4 },
-  { img: star1, left: "60%", top: "29%", size: 6 },
-  { img: star2, left: "71%", top: "33%", size: 4 },
-  { img: star3, left: "84%", top: "27%", size: 4 },
+    // mid sky
+    { img: star2, left: "5%", top: "30%", size: 4 },
+    { img: star3, left: "14%", top: "26%", size: 4 },
+    { img: star1, left: "26%", top: "34%", size: 6 },
+    { img: star2, left: "38%", top: "28%", size: 4 },
+    { img: star3, left: "47%", top: "35%", size: 4 },
+    { img: star1, left: "60%", top: "29%", size: 6 },
+    { img: star2, left: "71%", top: "33%", size: 4 },
+    { img: star3, left: "84%", top: "27%", size: 4 },
 
-  // near buildings (still sky)
-  { img: star1, left: "8%",  top: "46%", size: 6 },
-  { img: star2, left: "19%", top: "52%", size: 4 },
-  { img: star3, left: "33%", top: "48%", size: 4 },
-  { img: star1, left: "46%", top: "54%", size: 6 },
-  { img: star2, left: "59%", top: "49%", size: 4 },
-  { img: star3, left: "72%", top: "53%", size: 4 },
-  { img: star1, left: "86%", top: "47%", size: 6 },
-];
+    // near buildings (still sky)
+    { img: star1, left: "8%", top: "46%", size: 6 },
+    { img: star2, left: "19%", top: "52%", size: 4 },
+    { img: star3, left: "33%", top: "48%", size: 4 },
+    { img: star1, left: "46%", top: "54%", size: 6 },
+    { img: star2, left: "59%", top: "49%", size: 4 },
+    { img: star3, left: "72%", top: "53%", size: 4 },
+    { img: star1, left: "86%", top: "47%", size: 6 },
+  ];
 
 
 
@@ -152,34 +153,34 @@ const stars = [
 
   return (
     <>
-    <Navbar /> 
-<div className="w-full h-screen overflow-hidden bg-[#272757] relative pt-20"> 
+      <Navbar />
+      <div className="w-full h-screen overflow-hidden bg-[#272757] relative pt-20">
 
 
-{/* stars */}
-<div
-  className="absolute top-0 left-0 right-0 h-[100%] sm:h-[100%] lg:h-[80%] z-1 pointer-events-none"
-  style={{
-    maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
-    WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
-  }}
->
-  {stars.map((star, i) => (
-    <img
-      key={i}
-      src={star.img}
-      alt=""
-      draggable={false}
-      className="absolute pixel-perfect select-none opacity-90"
-      style={{
-        left: star.left,
-        top: star.top,
-        width: `${star.size}px`,
-        height: `${star.size}px`,
-      }}
-    />
-  ))}
-</div>
+        {/* stars */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[100%] sm:h-[100%] lg:h-[80%] z-1 pointer-events-none"
+          style={{
+            maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+          }}
+        >
+          {stars.map((star, i) => (
+            <img
+              key={i}
+              src={star.img}
+              alt=""
+              draggable={false}
+              className="absolute pixel-perfect select-none opacity-90"
+              style={{
+                left: star.left,
+                top: star.top,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+              }}
+            />
+          ))}
+        </div>
 
 
         <style>{`
@@ -231,15 +232,15 @@ const stars = [
                 src={building.img}
                 alt=""
                 draggable={false}
-                className={`absolute ${building.classes} ${building.z} w-auto pixel-perfect bottom-44 sm:bottom-4 md:bottom-4 lg:bottom-2 select-none pointer-events-none sm:w-[12%] ${hideClass}`}
+                className={`absolute ${building.classes} ${building.z} w-auto pixel-perfect bottom-[12rem] sm:bottom-4 md:bottom-4 lg:bottom-2 select-none pointer-events-none sm:w-[12%] ${hideClass}`}
               />
             );
           })}
 
           {/* balcony */}
-<div className="
+          <div className="
   absolute 
-  bottom-[-180px]           /* raised from -260px → -180px on mobile */
+  bottom-[-140px]           /* raised from -260px → -180px on mobile */
   sm:bottom-[-170px] 
   md:bottom-[-160px] 
   lg:bottom-[-120px] 
@@ -252,14 +253,14 @@ const stars = [
   overflow-hidden 
   pointer-events-none
 ">
-  <div className="flex h-full w-full">
-    {Array.from({ length: balconyCount }).map((_, i) => (
-      <img
-        key={i}
-        src={balcony}
-        alt=""
-        draggable={false}
-        className="
+            <div className="flex h-full w-full">
+              {Array.from({ length: balconyCount }).map((_, i) => (
+                <img
+                  key={i}
+                  src={balcony}
+                  alt=""
+                  draggable={false}
+                  className="
           h-full 
           scale-[2]          /* bigger on mobile */
           sm:scale-100 
@@ -270,17 +271,17 @@ const stars = [
           pointer-events-none 
           flex-shrink-0
         "
-      />
-    ))}
-  </div>
-</div>
+                />
+              ))}
+            </div>
+          </div>
 
 
           {/* Human - responsive with Tailwind scale */}
           <div
             className="
               absolute left-[28%] bottom-[-14%] sm:bottom-[-4.84%] z-[60]
-              scale-[1.25]
+              scale-[1.50]
               sm:scale-1
               md:scale-[1]
               lg:scale-[0.8]
@@ -296,7 +297,7 @@ const stars = [
 
 
           <div
-            className="absolute left-[60%] bottom-[-38%] sm:bottom-[-45%] md:bottom-[-35%]  md:left-[55%] z-[60] scale-[2.5] sm:scale-[2.5] md:scale-[2] lg:scale-[1.8] lg:bottom-[-28%] lg:left-[52%]"
+            className="absolute left-[63%] bottom-[-38%] sm:bottom-[-45%] md:bottom-[-35%]  md:left-[55%] z-[60] scale-[3] sm:scale-[2.5] md:scale-[2] lg:scale-[1.8] lg:bottom-[-28%] lg:left-[52%]"
             style={{
               width: `${0.14 * DESIGN_WIDTH}px`,
               height: `${0.375 * DESIGN_HEIGHT}px`,

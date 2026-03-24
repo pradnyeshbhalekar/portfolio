@@ -215,7 +215,7 @@ const Projects = () => {
           {/* RIGHT */}
           <div className="w-full lg:w-1/3 flex items-center justify-center mt-10 lg:mt-0">
             <div className="relative">
-              <div className="transform scale-[1.8] sm:scale-[2.2] md:scale-[2.8] lg:scale-[3]">
+              <div className="transform scale-[2.2] sm:scale-[2.8] md:scale-[3.2] lg:scale-[3]">
                 <Laptop />
               </div>
               <div className="absolute -right-8 sm:-right-12 bottom-0 md:top-2 scale-75 sm:scale-1 md:scale-[1] lg:scale-90 lg:-right-16">
