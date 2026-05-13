@@ -232,7 +232,7 @@ export default function ManualSkyline() {
                 src={building.img}
                 alt=""
                 draggable={false}
-                className={`absolute ${building.classes} ${building.z} w-auto pixel-perfect bottom-[1rem] sm:bottom-4 md:bottom-4 lg:bottom-2 select-none pointer-events-none sm:w-[12%] ${hideClass}`}
+                className={`absolute ${building.classes} ${building.z} w-auto pixel-perfect bottom-[12rem] sm:bottom-4 md:bottom-4 lg:bottom-2 select-none pointer-events-none sm:w-[12%] ${hideClass}`}
               />
             );
           })}
@@ -240,7 +240,7 @@ export default function ManualSkyline() {
           {/* balcony */}
           <div className="
   absolute 
-  bottom-[-158px]           /* raised from -260px → -180px on mobile */
+  bottom-[-140px]           /* raised from -260px → -180px on mobile */
   sm:bottom-[-170px] 
   md:bottom-[-160px] 
   lg:bottom-[-120px] 
@@ -262,7 +262,7 @@ export default function ManualSkyline() {
                   draggable={false}
                   className="
           h-full 
-          scale-[1.5]          /* bigger on mobile */
+          scale-[2]          /* bigger on mobile */
           sm:scale-100 
           md:scale-[1.4] 
           lg:scale-[1.2] 
@@ -281,7 +281,7 @@ export default function ManualSkyline() {
           <div
             className="
               absolute left-[28%] bottom-[-14%] sm:bottom-[-4.84%] z-[60]
-              scale-[1.25]
+              scale-[1.50]
               sm:scale-1
               md:scale-[1]
               lg:scale-[0.8]
@@ -297,7 +297,7 @@ export default function ManualSkyline() {
 
 
           <div
-            className="absolute left-[55%] bottom-[-22%] sm:bottom-[-45%] md:bottom-[-35%]  md:left-[55%] z-[60] scale-[2] sm:scale-[2.5] md:scale-[2] lg:scale-[1.8] lg:bottom-[-28%] lg:left-[52%]"
+            className="absolute left-[63%] bottom-[-38%] sm:bottom-[-45%] md:bottom-[-35%]  md:left-[55%] z-[60] scale-[3] sm:scale-[2.5] md:scale-[2] lg:scale-[1.8] lg:bottom-[-28%] lg:left-[52%]"
             style={{
               width: `${0.14 * DESIGN_WIDTH}px`,
               height: `${0.375 * DESIGN_HEIGHT}px`,
