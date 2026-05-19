@@ -6,7 +6,10 @@
     "github": "https://github.com/pradnyeshbhalekar/looplearn-fe",
     "github2": "https://github.com/pradnyeshbhalekar/looplearn-be",
     "live": "https://looplearn-nine.vercel.app",
-    "techstack": ["Python", "React"]
+    "techstack": [
+      "Python",
+      "React"
+    ]
   },
   {
     "title": "Passkey",
@@ -14,15 +17,23 @@
     "img": "/projects/passkey.png",
     "github": "https://github.com/pradnyeshbhalekar/passkey",
     "live": "https://passkey-ftx3.onrender.com/",
-    "techstack": ["React", "Node.js", "Express", "MongoDB"]
+    "techstack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ]
   },
   {
     "title": "Vibexx",
     "description": "Generates personalized Spotify playlists based on the user’s mood. Detects emotions using webcam image processing and syncs playlists directly to the user’s Spotify account.",
     "img": "/projects/vibexx.png",
     "github": "https://github.com/pradnyeshbhalekar/vibexx-fe",
-    "live": "https://vibexx.onrender.com",
-    "techstack": ["Next.js", "Flask"]
+    "live": "https://vibexx-0pf2.onrender.com",
+    "techstack": [
+      "Next.js",
+      "Flask"
+    ]
   },
   {
     "title": "GameLobby",
@@ -31,7 +42,12 @@
     "github": "https://github.com/pradnyeshbhalekar/gamelobby-frontend",
     "github2": "https://github.com/pradnyeshbhalekar/gamelobby-backend",
     "live": "",
-    "techstack": ["MongoDB", "Express", "React", "Node.js"]
+    "techstack": [
+      "MongoDB",
+      "Express",
+      "React",
+      "Node.js"
+    ]
   },
   {
     "title": "FormGen",
@@ -40,6 +56,8 @@
     "github": "https://github.com/pradnyeshbhalekar/formgen",
     "live": "https://formgen-app.onrender.com/",
     "pypi": "https://pypi.org/project/pyformgen/",
-    "techstack": ["Python"]
+    "techstack": [
+      "Python"
+    ]
   }
 ]
