@@ -78,7 +78,7 @@ const Projects = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onClick={() => setShowDetails(!showDetails)}
-              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer min-h-[430px] sm:min-h-0 sm:aspect-[16/9] shadow-2xl"
+              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer aspect-[4/3] sm:aspect-[16/9] shadow-2xl"
             >
               {/* IMAGE */}
               <div className="absolute inset-0">
