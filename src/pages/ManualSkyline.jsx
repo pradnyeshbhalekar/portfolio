@@ -267,22 +267,26 @@ const stars = [
             50% { opacity: 0.2; transform: scale(0.6); }
           }
           @keyframes shoot-across {
-            0%   { transform: translateX(-180px); opacity: 0; }
-            2%   { opacity: 1; }
-            14%  { transform: translateX(900px); opacity: 0; }
-            100% { transform: translateX(900px); opacity: 0; }
+            0%     { transform: translateX(-180px); opacity: 0; }
+            3%     { opacity: 1; }
+            13%    { transform: translateX(900px); opacity: 0; }
+            13.5%  { transform: translateX(-180px); opacity: 0; }
+            100%   { transform: translateX(-180px); opacity: 0; }
           }
           @keyframes shoot-across-2 {
-            0%   { transform: translateX(-140px); opacity: 0; }
-            2%   { opacity: 0.9; }
-            13%  { transform: translateX(700px); opacity: 0; }
-            100% { transform: translateX(700px); opacity: 0; }
+            0%     { transform: translateX(-140px); opacity: 0; }
+            3%     { opacity: 0.9; }
+            12%    { transform: translateX(700px); opacity: 0; }
+            12.5%  { transform: translateX(-140px); opacity: 0; }
+            100%   { transform: translateX(-140px); opacity: 0; }
           }
           .shooting-star-1 {
-            animation: shoot-across 9s ease-in 2s infinite;
+            animation: shoot-across 9s linear 2s infinite both;
+            will-change: transform, opacity;
           }
           .shooting-star-2 {
-            animation: shoot-across-2 9s ease-in 7s infinite;
+            animation: shoot-across-2 9s linear 7s infinite both;
+            will-change: transform, opacity;
           }
           .pixel-perfect {
             image-rendering: pixelated;
