@@ -171,7 +171,7 @@ const stars = [
   const humanDesignHeightPx = Math.round(0.55 * DESIGN_HEIGHT);
   const catDesignWidthPx = Math.round(0.14 * DESIGN_WIDTH);
   const catDesignHeightPx = Math.round(0.375 * DESIGN_HEIGHT);
-  const liftPct = vw < 420 ? -28 : vw < 640 ? -20 : vw < 768 ? -12 : vw < 1024 ? -6 : -1;
+  const liftPct = vw < 420 ? -65 : vw < 640 ? -50 : vw < 768 ? -30 : vw < 1024 ? -10 : -1;
 
   const innerStyle = {
     width: `${DESIGN_WIDTH}px`,
@@ -318,7 +318,7 @@ const stars = [
         </div>
 
         {/* inner design container */}
-        <div className="absolute bottom-4 left-1/2 pointer-events-none" style={innerStyle} aria-hidden="true">
+        <div className="absolute bottom-8 left-1/2 pointer-events-none" style={innerStyle} aria-hidden="true">
           {/* buildings */}
           {buildings.map((building, idx) => {
             const hideClass = building.hideOnSmall ? "hidden sm:block" : "";
