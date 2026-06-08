@@ -171,7 +171,7 @@ const stars = [
   const humanDesignHeightPx = Math.round(0.55 * DESIGN_HEIGHT);
   const catDesignWidthPx = Math.round(0.14 * DESIGN_WIDTH);
   const catDesignHeightPx = Math.round(0.375 * DESIGN_HEIGHT);
-  const liftPct = vw < 420 ? -20 : vw < 640 ? -15 : vw < 768 ? -10 : vw < 1024 ? -5 : -1;
+  const liftPct = vw < 420 ? -8 : vw < 640 ? -6 : vw < 768 ? -5 : vw < 1024 ? -3 : -1;
 
   const innerStyle = {
     width: `${DESIGN_WIDTH}px`,
