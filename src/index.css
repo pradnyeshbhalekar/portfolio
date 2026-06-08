@@ -24,6 +24,10 @@ html.lenis {
   --font-arcade: ARCADE;
 }
 
+body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

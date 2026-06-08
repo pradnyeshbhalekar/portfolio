@@ -132,6 +132,36 @@ const stars = [
   { img: star2, left: "59%", top: "49%", size: 4 },
   { img: star3, left: "72%", top: "53%", size: 4 },
   { img: star1, left: "86%", top: "47%", size: 6 },
+
+  // extra fill — between existing clusters
+  { img: star3, left: "2%",   top: "9%",  size: 3 },
+  { img: star2, left: "12%",  top: "2%",  size: 3 },
+  { img: star1, left: "25%",  top: "7%",  size: 3 },
+  { img: star3, left: "44%",  top: "2%",  size: 3 },
+  { img: star2, left: "63%",  top: "7%",  size: 3 },
+  { img: star1, left: "79%",  top: "3%",  size: 3 },
+  { img: star3, left: "93%",  top: "5%",  size: 3 },
+  { img: star2, left: "96%",  top: "14%", size: 3 },
+
+  { img: star1, left: "15%",  top: "22%", size: 3 },
+  { img: star3, left: "35%",  top: "20%", size: 3 },
+  { img: star2, left: "49%",  top: "24%", size: 3 },
+  { img: star1, left: "63%",  top: "22%", size: 4 },
+  { img: star3, left: "77%",  top: "25%", size: 3 },
+  { img: star2, left: "91%",  top: "20%", size: 3 },
+
+  { img: star3, left: "3%",   top: "38%", size: 3 },
+  { img: star1, left: "20%",  top: "40%", size: 4 },
+  { img: star2, left: "43%",  top: "38%", size: 3 },
+  { img: star3, left: "55%",  top: "42%", size: 3 },
+  { img: star1, left: "78%",  top: "39%", size: 4 },
+  { img: star2, left: "92%",  top: "36%", size: 3 },
+
+  { img: star3, left: "25%",  top: "57%", size: 3 },
+  { img: star1, left: "40%",  top: "60%", size: 3 },
+  { img: star2, left: "66%",  top: "56%", size: 3 },
+  { img: star3, left: "80%",  top: "58%", size: 3 },
+  { img: star1, left: "95%",  top: "55%", size: 3 },
 ];
 
 
@@ -153,7 +183,7 @@ const stars = [
   return (
     <>
     <Navbar /> 
-<div className="w-full h-screen overflow-hidden bg-[#272757] relative pt-20"> 
+<div className="w-full h-screen overflow-hidden relative pt-20" style={{ background: "radial-gradient(ellipse at 70% 0%, #1e2060 0%, #1a1a4e 40%, #13132e 100%)" }}>
 
 
 {/* stars */}
@@ -170,15 +200,52 @@ const stars = [
       src={star.img}
       alt=""
       draggable={false}
-      className="absolute pixel-perfect select-none opacity-90"
+      className="absolute pixel-perfect select-none"
       style={{
         left: star.left,
         top: star.top,
         width: `${star.size}px`,
         height: `${star.size}px`,
+        animation: i % 3 === 0
+          ? `twinkle ${2.2 + (i % 7) * 0.4}s ease-in-out ${(i * 0.37) % 3}s infinite`
+          : i % 3 === 1
+          ? `twinkle-slow ${3 + (i % 5) * 0.5}s ease-in-out ${(i * 0.53) % 4}s infinite`
+          : `twinkle ${1.8 + (i % 4) * 0.6}s ease-in-out ${(i * 0.29) % 2.5}s infinite`,
       }}
     />
   ))}
+
+  {/* shooting stars — wrapper is rotated so translateX moves diagonally */}
+  <div
+    className="absolute pointer-events-none overflow-visible"
+    style={{ left: "10%", top: "12%", transform: "rotate(22deg)", transformOrigin: "left center" }}
+  >
+    <div
+      className="shooting-star-1 pointer-events-none"
+      style={{
+        width: "130px",
+        height: "2px",
+        background: "linear-gradient(to left, rgba(255,255,255,0.95) 0%, rgba(180,210,255,0.5) 50%, transparent 100%)",
+        borderRadius: "9999px",
+        boxShadow: "0 0 6px 2px rgba(200,220,255,0.4)",
+      }}
+    />
+  </div>
+  <div
+    className="absolute pointer-events-none overflow-visible"
+    style={{ left: "48%", top: "7%", transform: "rotate(18deg)", transformOrigin: "left center" }}
+  >
+    <div
+      className="shooting-star-2 pointer-events-none"
+      style={{
+        width: "100px",
+        height: "1.5px",
+        background: "linear-gradient(to left, rgba(255,255,255,0.9) 0%, rgba(200,225,255,0.4) 50%, transparent 100%)",
+        borderRadius: "9999px",
+        boxShadow: "0 0 5px 1px rgba(200,220,255,0.35)",
+      }}
+    />
+  </div>
 </div>
 
 
@@ -190,6 +257,32 @@ const stars = [
           @keyframes moon-halo {
             0%, 100% { transform: scale(1); opacity: 0.78; }
             50% { transform: scale(1.02); opacity: 1; }
+          }
+          @keyframes twinkle {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+          }
+          @keyframes twinkle-slow {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(0.6); }
+          }
+          @keyframes shoot-across {
+            0%   { transform: translateX(-180px); opacity: 0; }
+            2%   { opacity: 1; }
+            14%  { transform: translateX(900px); opacity: 0; }
+            100% { transform: translateX(900px); opacity: 0; }
+          }
+          @keyframes shoot-across-2 {
+            0%   { transform: translateX(-140px); opacity: 0; }
+            2%   { opacity: 0.9; }
+            13%  { transform: translateX(700px); opacity: 0; }
+            100% { transform: translateX(700px); opacity: 0; }
+          }
+          .shooting-star-1 {
+            animation: shoot-across 9s ease-in 2s infinite;
+          }
+          .shooting-star-2 {
+            animation: shoot-across-2 9s ease-in 7s infinite;
           }
           .pixel-perfect {
             image-rendering: pixelated;

@@ -16,6 +16,8 @@ const AboutMe = () => {
       id="about"
       className="w-full min-h-screen bg-gray-900 text-white flex items-center justify-center px-6 py-16 relative overflow-hidden"
     >
+      {/* subtle top separator */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
       {/* Floor gradient overlay */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/30" />
 
@@ -42,18 +44,17 @@ const AboutMe = () => {
             ))}
           </div>
 
-          {/* PS5 + Cat SIDE BY SIDE (no overlap) */}
-          <div className="w-full flex justify-center mt-8">
-            <div className="flex items-end gap-10">
+          {/* PS5 + Cat SIDE BY SIDE */}
+          <div className="w-full flex justify-center mt-10">
+            <div className="relative flex items-end gap-6">
               {/* PS5 Character */}
               <div className="scale-[2.5] md:scale-[3.5] lg:scale-[4]">
                 <PS5 />
               </div>
-
-              {/* Cat chilling on side */}
-                <div className="absolute translate-y-[4rem] md:translate-y-[6rem] lg:translate-y-[8rem] scale-[1.2] md:scale-[1.4] opacity-95">
-      <CatIdle />
-    </div>
+              {/* Cat chilling beside PS5 — anchored to ground */}
+              <div className="absolute translate-y-[4rem] md:translate-y-[6rem] lg:translate-y-[8rem] scale-[1.2] md:scale-[1.5] lg:scale-[1.6] opacity-95">
+                <CatIdle />
+              </div>
             </div>
           </div>
         </div>

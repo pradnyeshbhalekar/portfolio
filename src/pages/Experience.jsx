@@ -13,8 +13,10 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="w-full min-h-screen bg-gray-700 text-white px-6 py-16 relative overflow-hidden"
+      className="w-full min-h-screen bg-gray-900 text-white px-6 py-16 relative overflow-hidden"
     >
+      {/* subtle top separator */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
       {/* Floor - Fixed at the bottom of the section */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/40 z-0"></div>
 
