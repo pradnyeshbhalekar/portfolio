@@ -1,5 +1,20 @@
 [
   {
+    "title": "Reachr",
+    "description": "A full-stack outreach automation tool that turns any company domain into warm, personalised outreach — in under a minute. Enter a domain, your goal, and a one-liner about yourself. Reachr finds similar companies via Ocean.io, locates the CEO or founder at each via Hunter.io, and streams results live. One click generates a tailored LinkedIn note and cold outreach message using GPT-4o-mini.",
+    "img": "/projects/reachr.png",
+    "github": "https://github.com/pradnyeshbhalekar/reachr/tree/api-branch",
+    "live": "https://reachr.onrender.com/",
+    "techstack": [
+      "React",
+      "Node.js",
+      "Express",
+      "Ocean.io",
+      "Hunter.io",
+      "GPT-4o-mini"
+    ]
+  },
+  {
     "title": "LoopLearn",
     "description": "LoopLearn delivers daily bite-sized learning for developers, covering topics from cybersecurity, frontend, and backend with concept explanations and real-world case studies.",
     "img": "/projects/looplearn.png",
