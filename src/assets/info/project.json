@@ -1,17 +1,15 @@
 [
   {
     "title": "Reachr",
-    "description": "A full-stack outreach automation tool that turns any company domain into warm, personalised outreach — in under a minute. Enter a domain, your goal, and a one-liner about yourself. Reachr finds similar companies via Ocean.io, locates the CEO or founder at each via Hunter.io, and streams results live. One click generates a tailored LinkedIn note and cold outreach message using GPT-4o-mini.",
+    "description": "Enter a domain, your goal, and a one-liner. Reachr finds similar companies, locates decision-makers, and generates personalised cold outreach — in under a minute.",
     "img": "/projects/reachr.png",
     "github": "https://github.com/pradnyeshbhalekar/reachr/tree/api-branch",
     "live": "https://reachr.onrender.com/",
     "techstack": [
-      "React",
-      "Node.js",
+      "MongoDB",
       "Express",
-      "Ocean.io",
-      "Hunter.io",
-      "GPT-4o-mini"
+      "React",
+      "Node.js"
     ]
   },
   {

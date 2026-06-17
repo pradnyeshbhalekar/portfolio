@@ -104,7 +104,7 @@ const Projects = () => {
                 <h2
                   className={`font-arcade text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-all duration-500 ${showDetails
                     ? "text-xl sm:text-2xl md:text-4xl mb-2"
-                    : "text-xl sm:text-3xl md:text-5xl"
+                    : "text-xl sm:text-3xl md:text-5xl mb-4"
                     }`}
                 >
                   {activeProject.title}
@@ -130,30 +130,32 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                </div>
 
-                  {/* FIXED BUTTONS - Arcade Font Applied */}
-                  <div className="flex gap-3">
-                    {activeProject.live && (
-                      <a
-                        href={activeProject.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs sm:text-sm font-arcade tracking-widest backdrop-blur-md shadow-lg transition-colors"
-                      >
-                        LIVE
-                      </a>
-                    )}
-                    {activeProject.github && (
-                      <a
-                        href={activeProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-5 py-2.5 bg-black/60 hover:bg-black/80 text-white rounded-lg text-xs sm:text-sm font-arcade tracking-widest backdrop-blur-md border border-white/10 transition-colors"
-                      >
-                        CODE
-                      </a>
-                    )}
-                  </div>
+                {/* BUTTONS - Always visible */}
+                <div className="flex gap-3 pointer-events-auto mt-1">
+                  {activeProject.live && (
+                    <a
+                      href={activeProject.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs sm:text-sm font-arcade tracking-widest backdrop-blur-md shadow-lg transition-colors"
+                    >
+                      LIVE
+                    </a>
+                  )}
+                  {activeProject.github && (
+                    <a
+                      href={activeProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="px-5 py-2.5 bg-black/60 hover:bg-black/80 text-white rounded-lg text-xs sm:text-sm font-arcade tracking-widest backdrop-blur-md border border-white/10 transition-colors"
+                    >
+                      CODE
+                    </a>
+                  )}
                 </div>
               </div>
 
