@@ -28,6 +28,8 @@ import star3 from "../assets/stars/star3.png";
 
 
 import balcony from "../assets/first/balcony-ledge.png";
+import plane1 from "../assets/planes/plane1.png";
+import plane2 from "../assets/planes/plane2.png";
 
 export default function ManualSkyline() {
   const DESIGN_WIDTH = 1400;
@@ -215,6 +217,22 @@ const stars = [
     />
   ))}
 
+  {/* plane2 — left to right */}
+  <div
+    className="absolute pointer-events-none"
+    style={{ top: "20%", animation: "fly-plane-ltr 70s linear 8s infinite", animationFillMode: "both" }}
+  >
+    <img src={plane2} alt="" draggable={false} className="pixel-perfect select-none" style={{ width: "80px", height: "auto", transform: "scaleX(-1)" }} />
+  </div>
+
+  {/* plane1 — right to left */}
+  <div
+    className="absolute pointer-events-none"
+    style={{ top: "30%", animation: "fly-plane-rtl 90s linear 45s infinite", animationFillMode: "both" }}
+  >
+    <img src={plane1} alt="" draggable={false} className="pixel-perfect select-none" style={{ width: "80px", height: "auto" }} />
+  </div>
+
   {/* shooting stars — wrapper is rotated so translateX moves diagonally */}
   <div
     className="absolute pointer-events-none overflow-visible"
@@ -247,6 +265,7 @@ const stars = [
     />
   </div>
 </div>
+
 
 
         <style>{`
@@ -292,6 +311,18 @@ const stars = [
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+          }
+          @keyframes fly-plane-ltr {
+            0%   { transform: translateX(-100px); opacity: 0; }
+            3%   { opacity: 1; }
+            95%  { opacity: 1; }
+            100% { transform: translateX(102vw); opacity: 0; }
+          }
+          @keyframes fly-plane-rtl {
+            0%   { transform: translateX(102vw); opacity: 0; }
+            3%   { opacity: 1; }
+            95%  { opacity: 1; }
+            100% { transform: translateX(-100px); opacity: 0; }
           }
         `}</style>
 
@@ -371,6 +402,7 @@ const stars = [
     ))}
   </div>
 </div>
+
 
 
           {/* Human - responsive with Tailwind scale */}

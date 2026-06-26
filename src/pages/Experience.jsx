@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
 import experienceData from "../assets/info/experience.json";
+import { useInView } from "../hooks/useInView";
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([]);
+  const [sectionRef, sectionInView] = useInView({ threshold: 0.02 });
+  const v = sectionInView ? "anim-visible" : "";
 
   useEffect(() => {
     setExperiences(experienceData);
@@ -13,6 +16,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
+      ref={sectionRef}
       className="w-full min-h-screen bg-gray-900 text-white px-6 py-16 relative overflow-hidden"
     >
       {/* subtle top separator */}
@@ -24,7 +28,7 @@ const Experience = () => {
         <div className="flex flex-col lg:flex-row items-start gap-12">
 
           {/* LEFT — Sticky & Vertically Centered Character Scene */}
-          <div className="w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-10 lg:py-0">
+          <div className={`w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-10 lg:py-0 anim-fade-left delay-100 ${v}`}>
             <div className="relative">
               {/* Laptop */}
               <div className="transform scale-[2.2] sm:scale-[2.8] md:scale-[3.2] lg:scale-[3]">
@@ -40,26 +44,30 @@ const Experience = () => {
 
           {/* RIGHT — Experience Content */}
           <div className="w-full lg:w-3/5 xl:w-2/3 lg:py-24">
-            <h1 className="font-arcade text-4xl md:text-5xl lg:text-6xl mb-16 text-center lg:text-left">
+            <h1 className={`font-arcade text-4xl md:text-5xl lg:text-6xl mb-16 text-center lg:text-left anim-fade-left delay-200 ${v}`}>
               EXPERIENCE
             </h1>
 
             {experiences.length > 0 ? (
               <div className="relative border-l-2 border-indigo-500/30 ml-4 md:ml-6 pl-8 md:pl-12 space-y-12 pb-20">
                 {experiences.map((exp, index) => (
-                  <div key={index} className="relative">
+                  <div
+                    key={index}
+                    className={`relative anim-fade-right ${v}`}
+                    style={{ transitionDelay: `${(index + 2) * 150}ms` }}
+                  >
                     {/* Timeline Dot */}
                     <div className="absolute -left-[41px] md:-left-[57px] top-2 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
 
                     <div
                       className="
-                        bg-gray-800/60 
-                        backdrop-blur-sm 
-                        rounded-2xl 
-                        p-6 md:p-8 
+                        bg-gray-800/60
+                        backdrop-blur-sm
+                        rounded-2xl
+                        p-6 md:p-8
                         border border-gray-600/50
                         shadow-xl
-                        transition-all 
+                        transition-all
                         duration-300
                         hover:border-indigo-400/50
                         hover:bg-gray-800/90

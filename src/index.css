@@ -38,3 +38,44 @@ body {
   }
 }
 
+/* ── Scroll-triggered animation base states ── */
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-fade-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-fade-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.anim-scale-up {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Visible state — added via JS when in view */
+.anim-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+

@@ -31,7 +31,6 @@ const Projects = () => {
     progressRef.current = 0;
   };
 
-  // Autoplay Logic
   useEffect(() => {
     if (isPaused || projects.length === 0) return;
     const interval = setInterval(() => {
@@ -40,7 +39,6 @@ const Projects = () => {
     return () => clearInterval(interval);
   }, [isPaused, nextProject, projects.length]);
 
-  // Super Smooth Timeline Logic (60FPS) via direct DOM manipulation to avoid re-renders
   useEffect(() => {
     if (isPaused || projects.length === 0) return;
 
@@ -196,14 +194,12 @@ const Projects = () => {
                     : "border-transparent opacity-40 hover:opacity-80 grayscale hover:grayscale-0"
                     }`}
                 >
-                  {/* Thumbnail Image */}
                   <img
                     src={project.img}
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
 
-                  {/* FULL IMAGE TIMELINE HIGHLIGHT - Darker Gray */}
                   {activeIndex === index && (
                     <div
                       ref={(el) => (progressElementsRef.current[index] = el)}
