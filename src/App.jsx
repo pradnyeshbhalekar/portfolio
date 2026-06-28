@@ -5,6 +5,7 @@ import Lenis from "lenis";
 import "./index.css";
 import Projects from "./pages/Projects";
 import Experience from "./pages/Experience";
+import SkillsTicker from "./components/SkillsTicker";
 
 
 
@@ -35,6 +36,7 @@ function App() {
       <ManualSkyline />
       <AboutMe />
       <Projects />
+      <SkillsTicker />
       <Experience />
 
     </div>

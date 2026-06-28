@@ -1,5 +1,18 @@
 [
   {
+    "title": "Stratix",
+    "description": "A backtesting platform for Indian equities that lets you configure ranking rules, filters, and rebalance strategies, then runs historical portfolio simulations and visualizes the results.",
+    "img": "/projects/stratix.png",
+    "github": "https://github.com/pradnyeshbhalekar/backtesting",
+    "live": "https://stratix-web.onrender.com",
+    "techstack": [
+      "React",
+      "Flask",
+      "PostgreSQL",
+      "Python"
+    ]
+  },
+  {
     "title": "Reachr",
     "description": "Enter a domain, your goal, and a one-liner. Reachr finds similar companies, locates decision-makers, and generates personalised cold outreach — in under a minute.",
     "img": "/projects/reachr.png",
