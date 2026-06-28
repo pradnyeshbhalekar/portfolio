@@ -11,7 +11,7 @@ const CATEGORY_COLORS = {
 
 export default function SkillsTicker() {
   return (
-    <section className="w-full bg-gray-900 text-white px-6 py-20 relative">
+    <section id="skills" className="w-full bg-gray-900 text-white px-6 py-20 relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto">

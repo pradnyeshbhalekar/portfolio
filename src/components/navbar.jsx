@@ -48,6 +48,18 @@ const Navbar = () => {
           </Link>
 
           <Link
+            to="skills"
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-80}
+            activeClass="text-indigo-400"
+            className="font-arcade text-md text-gray-300 hover:text-indigo-300 cursor-pointer select-none"
+          >
+            SKILLS
+          </Link>
+
+          <Link
             to="experience"
             smooth={true}
             duration={500}
@@ -94,6 +106,17 @@ const Navbar = () => {
             onClick={() => setOpen(false)}
           >
             PROJECTS
+          </Link>
+
+          <Link
+            to="skills"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="font-arcade text-gray-300 text-lg hover:text-indigo-300 cursor-pointer select-none"
+            onClick={() => setOpen(false)}
+          >
+            SKILLS
           </Link>
 
           <Link
