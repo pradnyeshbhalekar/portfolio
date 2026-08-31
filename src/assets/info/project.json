@@ -1,29 +1,11 @@
 [
   {
-    "title": "Stratix",
-    "description": "A backtesting platform for Indian equities that lets you configure ranking rules, filters, and rebalance strategies, then runs historical portfolio simulations and visualizes the results.",
-    "img": "/projects/stratix.png",
-    "github": "https://github.com/pradnyeshbhalekar/backtesting",
-    "live": "https://stratix-web.onrender.com",
-    "techstack": [
-      "React",
-      "Flask",
-      "PostgreSQL",
-      "Python"
-    ]
-  },
-  {
     "title": "Reachr",
     "description": "Enter a domain, your goal, and a one-liner. Reachr finds similar companies, locates decision-makers, and generates personalised cold outreach — in under a minute.",
     "img": "/projects/reachr.png",
     "github": "https://github.com/pradnyeshbhalekar/reachr/tree/api-branch",
     "live": "https://reachr.onrender.com/",
-    "techstack": [
-      "MongoDB",
-      "Express",
-      "React",
-      "Node.js"
-    ]
+    "techstack": ["MongoDB", "Express", "React", "Node.js"]
   },
   {
     "title": "LoopLearn",
@@ -32,10 +14,7 @@
     "github": "https://github.com/pradnyeshbhalekar/looplearn-fe",
     "github2": "https://github.com/pradnyeshbhalekar/looplearn-be",
     "live": "https://looplearn-nine.vercel.app",
-    "techstack": [
-      "Python",
-      "React"
-    ]
+    "techstack": ["Python", "React"]
   },
   {
     "title": "Passkey",
@@ -43,12 +22,7 @@
     "img": "/projects/passkey.png",
     "github": "https://github.com/pradnyeshbhalekar/passkey",
     "live": "https://passkey-ftx3.onrender.com/",
-    "techstack": [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB"
-    ]
+    "techstack": ["React", "Node.js", "Express", "MongoDB"]
   },
   {
     "title": "Vibexx",
@@ -56,10 +30,7 @@
     "img": "/projects/vibexx.png",
     "github": "https://github.com/pradnyeshbhalekar/vibexx-fe",
     "live": "https://vibexx-0pf2.onrender.com",
-    "techstack": [
-      "Next.js",
-      "Flask"
-    ]
+    "techstack": ["Next.js", "Flask"]
   },
   {
     "title": "GameLobby",
@@ -68,12 +39,7 @@
     "github": "https://github.com/pradnyeshbhalekar/gamelobby-frontend",
     "github2": "https://github.com/pradnyeshbhalekar/gamelobby-backend",
     "live": "",
-    "techstack": [
-      "MongoDB",
-      "Express",
-      "React",
-      "Node.js"
-    ]
+    "techstack": ["MongoDB", "Express", "React", "Node.js"]
   },
   {
     "title": "FormGen",
@@ -82,8 +48,14 @@
     "github": "https://github.com/pradnyeshbhalekar/formgen",
     "live": "https://formgen-app.onrender.com/",
     "pypi": "https://pypi.org/project/pyformgen/",
-    "techstack": [
-      "Python"
-    ]
+    "techstack": ["Python"]
+  },
+  {
+    "title": "Stratix",
+    "description": "A backtesting platform for Indian equities that lets you configure ranking rules, filters, and rebalance strategies, then runs historical portfolio simulations and visualizes the results.",
+    "img": "/projects/stratix.png",
+    "github": "https://github.com/pradnyeshbhalekar/backtesting",
+    "live": "https://stratix-web.onrender.com",
+    "techstack": ["React", "Flask", "PostgreSQL", "Python"]
   }
 ]
