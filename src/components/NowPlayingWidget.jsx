@@ -44,11 +44,10 @@ export default function NowPlayingWidget() {
     <div className="relative w-[360px] h-[360px] flex items-center justify-center">
 
       {/* Status text */}
-      <div className="absolute top-6 z-30 text-sm font-medium tracking-wide text-slate-300 font-arcade">
-
+      <div className="absolute top-6 z-30 text-sm font-medium text-slate-300 font-arcade" style={{ letterSpacing: "-2px", wordSpacing: "6px" }}>
         Currently spinning
       </div>
-      
+
       {/* Soft background focus */}
       <div className="absolute inset-0 flex items-center justify-center">
         {[200, 260, 320].map((size, i) => (
@@ -91,10 +90,16 @@ export default function NowPlayingWidget() {
 
       {/* Track info */}
       <div className="absolute bottom-6 z-30 text-center pointer-events-none">
-        <div className="text-sm font-semibold tracking-wide max-w-[240px] truncate font-arcade text-white/90">
+        <div
+          className="text-sm font-semibold max-w-[240px] truncate font-arcade text-white/90"
+          style={{ letterSpacing: "-2px", wordSpacing: "6px" }}
+        >
           {data.track}
         </div>
-        <div className="text-xs text-slate-400 max-w-[260px] font-arcade truncate">
+        <div
+          className="text-xs text-slate-400 max-w-[260px] font-arcade truncate"
+          style={{ letterSpacing: "-2px", wordSpacing: "6px" }}
+        >
           {data.artist}
         </div>
       </div>

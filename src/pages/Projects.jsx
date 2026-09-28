@@ -78,8 +78,9 @@ const Projects = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onClick={() => setShowDetails(!showDetails)}
-              className="relative group rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] transition-all duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer aspect-[4/3] sm:aspect-[16/9] shadow-2xl"
+              className="relative group transition-transform duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer aspect-[4/3] sm:aspect-[16/9]"
             >
+              <div className="absolute inset-0 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] shadow-2xl [transform:translateZ(0)] [backface-visibility:hidden] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
               {/* IMAGE */}
               <div className="absolute inset-0">
                 <img
@@ -156,6 +157,7 @@ const Projects = () => {
                   )}
                 </div>
               </div>
+              </div>
 
               {/* NAVIGATION BUTTONS */}
               <button
@@ -180,7 +182,7 @@ const Projects = () => {
             </div>
 
             {/* THUMBNAILS */}
-            <div className="mt-5 flex gap-3 overflow-x-auto no-scrollbar pb-3">
+            <div className="mt-8 flex gap-5 overflow-x-auto no-scrollbar pb-3 px-1">
               {projects.map((project, index) => (
                 <button
                   key={index}
@@ -189,24 +191,31 @@ const Projects = () => {
                     setShowDetails(false);
                     progressRef.current = 0;
                   }}
-                  className={`relative flex-shrink-0 w-24 sm:w-28 aspect-video rounded-lg overflow-hidden border transition-all duration-300 ${activeIndex === index
-                    ? "border-gray-500 scale-105 shadow-lg shadow-white/5"
-                    : "border-transparent opacity-40 hover:opacity-80 grayscale hover:grayscale-0"
+                  className={`relative flex-shrink-0 w-16 sm:w-20 aspect-video transition-transform duration-300 ${activeIndex === index
+                    ? "scale-125"
+                    : "opacity-50 hover:opacity-90"
                     }`}
                 >
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-
-                  {activeIndex === index && (
-                    <div
-                      ref={(el) => (progressElementsRef.current[index] = el)}
-                      className="absolute top-0 left-0 h-full bg-gray-800/70 pointer-events-none transition-none"
-                      style={{ width: `${progressRef.current}%` }}
+                  <div
+                    className={`absolute inset-0 rounded-xl overflow-hidden [transform:translateZ(0)] [backface-visibility:hidden] [-webkit-mask-image:-webkit-radial-gradient(white,black)] ${activeIndex === index
+                      ? "ring-2 ring-white shadow-lg shadow-white/10"
+                      : ""
+                      }`}
+                  >
+                    <img
+                      src={project.img}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
                     />
-                  )}
+
+                    {activeIndex === index && (
+                      <div
+                        ref={(el) => (progressElementsRef.current[index] = el)}
+                        className="absolute bottom-0 left-0 h-0.5 bg-white pointer-events-none transition-none"
+                        style={{ width: `${progressRef.current}%` }}
+                      />
+                    )}
+                  </div>
                 </button>
               ))}
             </div>

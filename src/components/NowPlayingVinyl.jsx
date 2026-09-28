@@ -1,47 +1,55 @@
+const GRID = 32;
+const CENTER = GRID / 2 - 0.5;
+const OUTER_R = GRID / 2 - 0.5;
+const LABEL_R = OUTER_R * 0.34;
+const HOLE_R = OUTER_R * 0.08;
+
+const DISC_DARK = "#0a0f16";
+const DISC_LIGHT = "#182432";
+const GROOVE = "#26364a";
+const RIM = "#000000";
+const LABEL_FILL = "#8a4a12";
+const LABEL_RING = "#4a2409";
+const HOLE_FILL = "#020617";
+
+// Precompute the pixel grid once — it never depends on props.
+const PIXELS = [];
+for (let y = 0; y < GRID; y++) {
+  for (let x = 0; x < GRID; x++) {
+    const dx = x - CENTER;
+    const dy = y - CENTER;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d > OUTER_R + 0.35) continue;
+
+    let fill;
+    if (d <= HOLE_R) {
+      fill = HOLE_FILL;
+    } else if (d <= LABEL_R) {
+      fill = d >= LABEL_R - 0.9 ? LABEL_RING : LABEL_FILL;
+    } else if (d >= OUTER_R - 0.6) {
+      fill = RIM;
+    } else {
+      const band = Math.floor((OUTER_R - d) / 1.4) % 3;
+      fill = band === 0 ? GROOVE : (x + y) % 2 === 0 ? DISC_LIGHT : DISC_DARK;
+    }
+    PIXELS.push({ x, y, fill });
+  }
+}
+
 export default function NowPlayingVinyl({ isPlaying = true, size = 10 }) {
   return (
     <div
-      className={`
-        ${isPlaying ? "animate-spin-slow" : ""}
-        w-[${size}px] h-[${size}px]
-      `}
+      className={isPlaying ? "animate-spin-slow" : ""}
+      style={{ width: size, height: size }}
     >
       <svg
         className="w-full h-full"
-        viewBox="0 0 16 16"
+        viewBox={`0 0 ${GRID} ${GRID}`}
         shapeRendering="crispEdges"
       >
-        {/* outer rim – circular */}
-        <rect x="6" y="0" width="4" height="1" fill="#0b1220" />
-        <rect x="4" y="1" width="8" height="1" fill="#0b1220" />
-        <rect x="2" y="2" width="12" height="1" fill="#0b1220" />
-        <rect x="1" y="3" width="14" height="1" fill="#0b1220" />
-        <rect x="0" y="4" width="16" height="8" fill="#0b1220" />
-        <rect x="1" y="12" width="14" height="1" fill="#0b1220" />
-        <rect x="2" y="13" width="12" height="1" fill="#0b1220" />
-        <rect x="4" y="14" width="8" height="1" fill="#0b1220" />
-        <rect x="6" y="15" width="4" height="1" fill="#0b1220" />
-
-        {/* disc surface */}
-        <rect x="3" y="3" width="10" height="10" fill="#1e293b" />
-        <rect x="4" y="2" width="8" height="12" fill="#1e293b" />
-
-        {/* radial grooves (circular illusion) */}
-        <rect x="6" y="3" width="4" height="1" fill="#263554" />
-        <rect x="5" y="4" width="6" height="1" fill="#263554" />
-        <rect x="4" y="5" width="8" height="1" fill="#263554" />
-        <rect x="3" y="7" width="10" height="1" fill="#263554" />
-        <rect x="3" y="8" width="10" height="1" fill="#263554" />
-        <rect x="4" y="10" width="8" height="1" fill="#263554" />
-        <rect x="5" y="11" width="6" height="1" fill="#263554" />
-        <rect x="6" y="12" width="4" height="1" fill="#263554" />
-
-        {/* inner clear ring */}
-        <rect x="6" y="5" width="4" height="6" fill="#334155" />
-        <rect x="5" y="6" width="6" height="4" fill="#334155" />
-
-        {/* CD hole – unmistakable */}
-        <rect x="7" y="7" width="2" height="2" fill="#020617" />
+        {PIXELS.map(({ x, y, fill }) => (
+          <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={fill} />
+        ))}
       </svg>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import skillsData from "../assets/info/skills.json";
+import CatPlaying from "./CatPlaying";
 
 const CATEGORY_COLORS = {
   "Programming Languages":      { dot: "bg-blue-400",   tag: "bg-blue-500/10 text-blue-200 border-blue-500/20" },
@@ -15,8 +16,16 @@ export default function SkillsTicker() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-arcade text-3xl md:text-4xl text-white mb-2 tracking-widest">SKILLS</h2>
-        <p className="text-gray-400 text-sm mb-12">Things I work with</p>
+        <div className="relative flex items-start justify-between mb-12">
+          <div>
+            <h2 className="font-arcade text-3xl md:text-4xl text-white mb-2 tracking-widest">SKILLS</h2>
+            <p className="text-gray-400 text-sm">Things I work with</p>
+          </div>
+
+          <div className="md:hidden pointer-events-none -mt-2 -mr-2">
+            <CatPlaying fps={8} loop width={150} height={150} />
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {skillsData.map((cat, i) => {
@@ -43,6 +52,10 @@ export default function SkillsTicker() {
               </div>
             );
           })}
+
+          <div className="hidden md:flex items-center justify-center pointer-events-none">
+            <CatPlaying fps={8} loop width={220} height={220} />
+          </div>
         </div>
       </div>
     </section>
