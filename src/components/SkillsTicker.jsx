@@ -54,7 +54,7 @@ export default function SkillsTicker() {
           })}
 
           <div className="hidden md:flex items-center justify-center pointer-events-none">
-            <CatPlaying fps={8} loop width={220} height={220} />
+            <CatPlaying fps={8} loop width={320} height={320} />
           </div>
         </div>
       </div>
