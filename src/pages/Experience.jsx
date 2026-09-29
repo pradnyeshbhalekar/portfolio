@@ -17,7 +17,7 @@ const Experience = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="w-full min-h-screen bg-gray-900 text-white px-6 py-16 relative overflow-hidden"
+      className="w-full min-h-screen bg-gray-900 text-white px-4 md:px-6 py-10 md:py-16 relative overflow-hidden"
     >
       {/* subtle top separator */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
@@ -25,13 +25,13 @@ const Experience = () => {
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/40 z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-start gap-12">
+        <div className="flex flex-col lg:flex-row items-start gap-4 md:gap-12">
 
           {/* LEFT — Sticky & Vertically Centered Character Scene */}
-          <div className={`w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-10 lg:py-0 anim-fade-left delay-100 ${v}`}>
+          <div className={`w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-2 sm:py-6 lg:py-0 anim-fade-left delay-100 ${v}`}>
             <div className="relative">
               {/* Laptop */}
-              <div className="transform scale-[2.2] sm:scale-[2.8] md:scale-[3.2] lg:scale-[3]">
+              <div className="transform scale-[1.4] sm:scale-[2.2] md:scale-[2.8] lg:scale-[3]">
                 <Laptop />
               </div>
 
@@ -44,12 +44,12 @@ const Experience = () => {
 
           {/* RIGHT — Experience Content */}
           <div className="w-full lg:w-3/5 xl:w-2/3 lg:py-24">
-            <h1 className={`font-arcade text-4xl md:text-5xl lg:text-6xl mb-16 text-center lg:text-left anim-fade-left delay-200 ${v}`}>
+            <h1 className={`font-arcade text-3xl md:text-5xl lg:text-6xl mb-6 md:mb-16 text-center lg:text-left anim-fade-left delay-200 ${v}`}>
               EXPERIENCE
             </h1>
 
             {experiences.length > 0 ? (
-              <div className="relative border-l-2 border-indigo-500/30 ml-4 md:ml-6 pl-8 md:pl-12 space-y-12 pb-20">
+              <div className="relative border-l-2 border-indigo-500/30 ml-4 md:ml-6 pl-6 md:pl-10 space-y-6 md:space-y-8 pb-10 md:pb-20">
                 {experiences.map((exp, index) => (
                   <div
                     key={index}
@@ -57,14 +57,14 @@ const Experience = () => {
                     style={{ transitionDelay: `${(index + 2) * 150}ms` }}
                   >
                     {/* Timeline Dot */}
-                    <div className="absolute -left-[41px] md:-left-[57px] top-2 w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
+                    <div className="absolute -left-[35px] md:-left-[49px] top-2 w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
 
                     <div
                       className="
                         bg-gray-800/60
                         backdrop-blur-sm
-                        rounded-2xl
-                        p-6 md:p-8
+                        rounded-xl
+                        p-4 md:p-6
                         border border-gray-600/50
                         shadow-xl
                         transition-all
@@ -75,21 +75,21 @@ const Experience = () => {
                       "
                     >
                       {/* Company & Role */}
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-3">
                         <div>
-                          <h2 className="font-bold text-2xl text-indigo-300">
+                          <h2 className="font-bold text-lg md:text-xl text-indigo-300">
                             {exp.role}
                           </h2>
-                          <h3 className="text-xl text-gray-300 font-medium">
+                          <h3 className="text-base md:text-lg text-gray-300 font-medium">
                             {exp.company}
                           </h3>
                         </div>
                         <div className="text-right flex flex-col items-start md:items-end">
-                          <span className="text-indigo-400 font-mono text-sm md:text-base">
+                          <span className="text-indigo-400 font-mono text-xs md:text-sm">
                             {exp.duration}
                           </span>
                           {exp.location && (
-                            <span className="text-gray-400 text-xs md:text-sm uppercase tracking-widest">
+                            <span className="text-gray-400 text-xs uppercase tracking-widest">
                               {exp.location}
                             </span>
                           )}
@@ -97,16 +97,16 @@ const Experience = () => {
                       </div>
 
                       {/* Description */}
-                      <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6 opacity-90">
+                      <p className="text-gray-300 text-sm leading-relaxed mb-4 opacity-90">
                         {exp.description}
                       </p>
 
                       {/* Highlights */}
                       {exp.highlights && exp.highlights.length > 0 && (
-                        <ul className="space-y-3 mb-6">
+                        <ul className="space-y-2 mb-4">
                           {exp.highlights.map((highlight, i) => (
-                            <li key={i} className="text-gray-300 text-sm md:text-base flex items-start gap-3">
-                              <span className="text-indigo-500 mt-1">➤</span>
+                            <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                              <span className="text-indigo-500 mt-0.5">➤</span>
                               <span>{highlight}</span>
                             </li>
                           ))}
@@ -115,11 +115,11 @@ const Experience = () => {
 
                       {/* Technologies */}
                       {exp.technologies && exp.technologies.length > 0 && (
-                        <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-700">
+                        <div className="flex flex-wrap gap-1.5 pt-3 border-t border-gray-700">
                           {exp.technologies.map((tech, i) => (
                             <span
                               key={i}
-                              className="bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-md text-xs font-medium"
+                              className="bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-md text-xs font-medium"
                             >
                               {tech}
                             </span>
