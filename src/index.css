@@ -3,6 +3,11 @@
   src: url("../src/assets/fonts/ARCADECLASSIC.TTF");
 }
 
+@font-face {
+  font-family: Monocraft;
+  src: url("../src/assets/fonts/Monocraft.woff") format("woff");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

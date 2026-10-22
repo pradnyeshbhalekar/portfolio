@@ -227,7 +227,7 @@ const Projects = () => {
               <div className="transform scale-[2.2] sm:scale-[2.8] md:scale-[3.2] lg:scale-[3]">
                 <Laptop />
               </div>
-              <div className="absolute -right-8 sm:-right-12 bottom-0 md:top-2 scale-75 sm:scale-1 md:scale-[1] lg:scale-90 lg:-right-16">
+              <div className="absolute -right-8 sm:-right-12 bottom-0 md:top-2 scale-[0.6] translate-y-2 sm:scale-75 sm:translate-y-0 md:scale-[1] lg:scale-90 lg:-right-16">
                 <CatSleep />
               </div>
             </div>

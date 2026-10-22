@@ -4,6 +4,7 @@ export default {
     extend: {
       fontFamily: {
         arcade: ["ARCADE", "sans-serif"],
+        minecraft: ["Monocraft", "monospace"],
       },
       keyframes: {
         spinSlow: {
