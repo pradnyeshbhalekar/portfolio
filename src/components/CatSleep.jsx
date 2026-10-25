@@ -16,7 +16,7 @@ import c10 from "../assets/sleepcat/cat10.png";
 
 
 
-export default function CatSleep() {
+export default function CatSleep({ width = 100, height = 100 }) {
   const catFrames = [c0, c1, c2,c3,c4,c5,c6,c7,c8,c9,c10];
 
   return (
@@ -25,8 +25,8 @@ export default function CatSleep() {
         frames={catFrames}
         fps={8}
         loop={true}
-        width={100}
-        height={100}
+        width={width}
+        height={height}
       />
     </NameTag>
   );

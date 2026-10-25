@@ -29,15 +29,20 @@ const Experience = () => {
 
           {/* LEFT — Sticky & Vertically Centered Character Scene */}
           <div className={`w-full lg:w-2/5 xl:w-1/3 lg:h-screen lg:sticky lg:top-20 flex items-center justify-center py-2 sm:py-6 lg:py-0 anim-fade-left delay-100 ${v}`}>
-            <div className="relative">
+            <div className="relative flex items-end">
               {/* Laptop */}
-              <div className="transform scale-[1.4] sm:scale-[2.2] md:scale-[2.8] lg:scale-[3]">
+              <div className="relative transform scale-[1.4] sm:scale-[2.2] md:scale-[2.8] lg:scale-[3]">
                 <Laptop />
+
+                {/* Cat on the desk — inside the scaled scene so it keeps the same size and spot at every breakpoint */}
+                <div className="hidden sm:block absolute left-[56px] top-[38px] w-max origin-top-left scale-[0.3]">
+                  <CatSleep />
+                </div>
               </div>
 
-              {/* Cat beside laptop */}
-              <div className="absolute -right-12 sm:-right-16 md:-right-20 lg:-right-16 bottom-0 md:top-2 transform scale-75 md:scale-[1] lg:scale-90">
-                <CatSleep />
+              {/* Phones: the scene is too small for a Skills-sized cat on the desk, so it naps on the floor beside it */}
+              <div className="sm:hidden ml-[20px] translate-y-[26px]">
+                <CatSleep width={88} height={72} />
               </div>
             </div>
           </div>
