@@ -21,8 +21,8 @@ const Experience = () => {
     >
       {/* subtle top separator */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
-      {/* Floor - Fixed at the bottom of the section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-black/40 z-0"></div>
+      {/* Floor - Fixed at the bottom of the section (desktop only, it cuts through the cards on phones) */}
+      <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-24 bg-black/40 z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-4 md:gap-12">
@@ -49,15 +49,15 @@ const Experience = () => {
             </h1>
 
             {experiences.length > 0 ? (
-              <div className="relative border-l-2 border-indigo-500/30 ml-4 md:ml-6 pl-6 md:pl-10 space-y-6 md:space-y-8 pb-10 md:pb-20">
+              <div className="relative border-l-2 border-indigo-500/30 ml-2 md:ml-6 pl-5 md:pl-10 space-y-5 md:space-y-8 pb-2 md:pb-20">
                 {experiences.map((exp, index) => (
                   <div
                     key={index}
                     className={`relative anim-fade-right ${v}`}
                     style={{ transitionDelay: `${(index + 2) * 150}ms` }}
                   >
-                    {/* Timeline Dot */}
-                    <div className="absolute -left-[35px] md:-left-[49px] top-2 w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
+                    {/* Timeline Dot — centered on the 2px line: -(padding-left + 7px) */}
+                    <div className="absolute -left-[27px] md:-left-[47px] top-5 md:top-8 w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
 
                     <div
                       className="
@@ -74,22 +74,22 @@ const Experience = () => {
                         hover:shadow-indigo-500/10
                       "
                     >
-                      {/* Company & Role */}
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-3">
+                      {/* Company, Role & Duration */}
+                      <div className="flex flex-col-reverse md:flex-row md:items-start justify-between gap-2 md:gap-4 mb-3">
                         <div>
-                          <h2 className="font-bold text-lg md:text-xl text-indigo-300">
+                          <h2 className="font-bold text-base sm:text-lg md:text-xl leading-snug text-indigo-300">
                             {exp.role}
                           </h2>
-                          <h3 className="text-base md:text-lg text-gray-300 font-medium">
+                          <h3 className="text-sm sm:text-base md:text-lg text-gray-300 font-medium">
                             {exp.company}
                           </h3>
                         </div>
-                        <div className="text-right flex flex-col items-start md:items-end">
-                          <span className="text-indigo-400 font-mono text-xs md:text-sm">
+                        <div className="flex flex-col items-start md:items-end shrink-0">
+                          <span className="inline-block bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 font-mono text-[11px] md:text-xs px-2 py-0.5 rounded-md whitespace-nowrap">
                             {exp.duration}
                           </span>
                           {exp.location && (
-                            <span className="text-gray-400 text-xs uppercase tracking-widest">
+                            <span className="mt-1 text-gray-400 text-xs uppercase tracking-widest">
                               {exp.location}
                             </span>
                           )}
@@ -97,7 +97,7 @@ const Experience = () => {
                       </div>
 
                       {/* Description */}
-                      <p className="text-gray-300 text-sm leading-relaxed mb-4 opacity-90">
+                      <p className="text-gray-300 text-[13px] md:text-sm leading-relaxed mb-3 md:mb-4 last:mb-0">
                         {exp.description}
                       </p>
 
@@ -105,21 +105,21 @@ const Experience = () => {
                       {exp.highlights && exp.highlights.length > 0 && (
                         <ul className="space-y-2 mb-4">
                           {exp.highlights.map((highlight, i) => (
-                            <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
-                              <span className="text-indigo-500 mt-0.5">➤</span>
+                            <li key={i} className="text-gray-400 text-[13px] md:text-sm leading-relaxed flex items-start gap-2.5">
+                              <span className="mt-[0.55em] w-1.5 h-1.5 shrink-0 bg-indigo-400" />
                               <span>{highlight}</span>
                             </li>
                           ))}
                         </ul>
                       )}
 
-                      {/* Technologies */}
-                      {exp.technologies && exp.technologies.length > 0 && (
+                      {/* Tech Stack */}
+                      {exp.techstack && exp.techstack.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 pt-3 border-t border-gray-700">
-                          {exp.technologies.map((tech, i) => (
+                          {exp.techstack.map((tech, i) => (
                             <span
                               key={i}
-                              className="bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-md text-xs font-medium"
+                              className="bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-md text-[11px] md:text-xs font-medium"
                             >
                               {tech}
                             </span>
