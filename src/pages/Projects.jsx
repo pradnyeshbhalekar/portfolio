@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
 import projectData from "../assets/info/project.json";
+import { registerTools, scrollToSection } from "../webmcp";
 
 const AUTO_TIME = 5000;
 
@@ -55,6 +56,37 @@ const Projects = () => {
 
     return () => clearInterval(timer);
   }, [activeIndex, isPaused, projects.length]);
+
+  // WebMCP: let browser agents open a project in the showcase.
+  useEffect(
+    () =>
+      registerTools([
+        {
+          name: "show_project",
+          title: "Show project",
+          description:
+            "Scroll to the projects section and open one project's details in the showcase. Pauses the auto-rotating carousel so the project stays on screen.",
+          inputSchema: {
+            type: "object",
+            properties: { title: { type: "string", enum: projectData.map((p) => p.title) } },
+            required: ["title"],
+          },
+          execute: async ({ title }) => {
+            const index = projectData.findIndex((p) => p.title.toLowerCase() === String(title).toLowerCase());
+            if (index === -1) {
+              return { error: `Unknown project "${title}". Use one of: ${projectData.map((p) => p.title).join(", ")}.` };
+            }
+            setActiveIndex(index);
+            setShowDetails(true);
+            setIsPaused(true);
+            progressRef.current = 0;
+            scrollToSection("projects");
+            return { shown: projectData[index].title };
+          },
+        },
+      ]),
+    []
+  );
 
   if (projects.length === 0) return null;
 

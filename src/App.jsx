@@ -6,6 +6,7 @@ import "./index.css";
 import Projects from "./pages/Projects";
 import Experience from "./pages/Experience";
 import SkillsTicker from "./components/SkillsTicker";
+import { registerTools, portfolioTools } from "./webmcp";
 
 
 
@@ -31,6 +32,9 @@ function App() {
       lenis.destroy();
     };
   }, []);
+
+  useEffect(() => registerTools(portfolioTools), []);
+
   return (
     <div>
       <ManualSkyline />
