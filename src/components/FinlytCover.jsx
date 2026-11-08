@@ -1,22 +1,22 @@
 import { useEffect, useRef } from "react";
 
 // Live cover for the Finlyt project card. The coin mascot and "finlyt" wordmark are the
-// same SVG as on the Finlyt website (finlyt-web/src/components/Logo.jsx), recoloured for a
-// blue background like the app icon. On show it plays the website's intro: the coin pops
-// in and dances while blinking, the letters bounce in one by one, then it does a happy hop.
+// same SVG as on the Finlyt website (finlyt-web/src/components/Logo.jsx), in the website's
+// light-theme colours on a white background. On show it plays the website's intro: the coin
+// pops in and dances while blinking, the letters bounce in one by one, then a happy hop.
 // After that it idles (blinks, hops now and then) and hops whenever anything clickable on
 // the card is pressed. With reduced motion everything stays still.
 //
 // Every size is in cqw (percent of the card's width) so it scales with the card.
 
 const COLORS = {
-  bg: "#3355FF",
-  face: "#FFFFFF",
-  edge: "#AEBBFF",
+  bg: "#FFFFFF",
+  face: "#3355FF",
+  edge: "#2440E6",
   ring: "#AEBBFF",
-  eyes: "#3355FF",
-  text: "#FFFFFF",
-  dot: "#0B1033",
+  eyes: "#FFFFFF",
+  text: "#0B1033",
+  dot: "#3355FF",
 };
 
 const LETTERS = [
@@ -134,7 +134,7 @@ function Wordmark({ letterRefs, hidden }) {
 function Widget({ src, className, style }) {
   return (
     <div
-      className={`finlyt-float overflow-hidden bg-white shadow-[0_2cqw_5cqw_rgba(11,16,51,0.35)] ${className}`}
+      className={`finlyt-float overflow-hidden bg-white border border-[#E7E8EE] shadow-[0_1.5cqw_4cqw_rgba(11,16,51,0.12)] ${className}`}
       style={{ borderRadius: "2.2cqw", ...style }}
     >
       <img src={src} alt="" draggable="false" className="block w-full" />
@@ -220,7 +220,7 @@ export default function FinlytCover() {
           top: "-12cqw",
           width: "55cqw",
           height: "55cqw",
-          background: "radial-gradient(circle, rgba(174,187,255,0.35), transparent 65%)",
+          background: "radial-gradient(circle, rgba(174,187,255,0.28), transparent 65%)",
         }}
       />
 
@@ -233,8 +233,8 @@ export default function FinlytCover() {
           <Wordmark letterRefs={letterRefs} hidden={!still} />
         </div>
         <p
-          className="font-semibold text-white"
-          style={{ marginTop: "3cqw", fontSize: "3.6cqw", lineHeight: 1.1, letterSpacing: "-0.05cqw" }}
+          className="font-semibold"
+          style={{ color: COLORS.text, marginTop: "3cqw", fontSize: "3.6cqw", lineHeight: 1.1, letterSpacing: "-0.05cqw" }}
         >
           Never forget an expense again.
         </p>
