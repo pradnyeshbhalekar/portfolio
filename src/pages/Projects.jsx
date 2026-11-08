@@ -2,6 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Laptop from "../components/Laptop";
 import CatSleep from "../components/CatSleep";
+import FinlytCover from "../components/FinlytCover";
+
+// Projects with a live, animated cover instead of a still image (set "cover" in project.json).
+const COVERS = { finlyt: FinlytCover };
 import projectData from "../assets/info/project.json";
 import { registerTools, scrollToSection } from "../webmcp";
 
@@ -91,6 +95,7 @@ const Projects = () => {
   if (projects.length === 0) return null;
 
   const activeProject = projects[activeIndex];
+  const LiveCover = COVERS[activeProject.cover];
 
   return (
     <section id="projects" className="w-full min-h-screen bg-[#111827] text-white px-2 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
@@ -110,16 +115,21 @@ const Projects = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onClick={() => setShowDetails(!showDetails)}
+              data-finlyt-card
               className="relative group transition-transform duration-500 transform hover:scale-[1.01] active:scale-[0.98] cursor-pointer aspect-[4/3] sm:aspect-[16/9]"
             >
               <div className="absolute inset-0 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-gray-800/50 bg-[#0d1117] shadow-2xl [transform:translateZ(0)] [backface-visibility:hidden] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
               {/* IMAGE */}
               <div className="absolute inset-0">
-                <img
-                  src={activeProject.img}
-                  alt={activeProject.title}
-                  className="w-full h-full object-cover transition-opacity duration-500"
-                />
+                {LiveCover ? (
+                  <LiveCover key={activeIndex} />
+                ) : (
+                  <img
+                    src={activeProject.img}
+                    alt={activeProject.title}
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                  />
+                )}
 
                 {/* STRONGER OVERLAY */}
                 <div

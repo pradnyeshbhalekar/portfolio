@@ -3,6 +3,7 @@
     "title": "Finlyt",
     "description": "An Android expense tracker that reads UPI and bank payment SMS automatically, reminds you to log at times you choose, and turns plain words or voice notes into categorised, split expenses using Gemini AI.",
     "img": "/projects/finlyt.png",
+    "cover": "finlyt",
     "github": "https://github.com/pradnyeshbhalekar/finlyt",
     "github2": "https://github.com/pradnyeshbhalekar/finlyt-web",
     "live": "https://finlyt.onrender.com",
