@@ -36,18 +36,20 @@ const Projects = () => {
     progressRef.current = 0;
   };
 
+  // How long the current project stays up before the carousel moves on. A project can set
+  // its own "duration" (ms) in project.json; the rest use AUTO_TIME.
+  const slideTime = projects[activeIndex]?.duration ?? AUTO_TIME;
+
   useEffect(() => {
     if (isPaused || projects.length === 0) return;
-    const interval = setInterval(() => {
-      nextProject();
-    }, AUTO_TIME);
-    return () => clearInterval(interval);
-  }, [isPaused, nextProject, projects.length]);
+    const timeout = setTimeout(nextProject, slideTime * (1 - progressRef.current / 100));
+    return () => clearTimeout(timeout);
+  }, [isPaused, nextProject, projects.length, activeIndex, slideTime]);
 
   useEffect(() => {
     if (isPaused || projects.length === 0) return;
 
-    const step = 100 / (AUTO_TIME / 16);
+    const step = 100 / (slideTime / 16);
     const timer = setInterval(() => {
       progressRef.current += step;
       if (progressRef.current >= 100) progressRef.current = 0;
@@ -59,7 +61,7 @@ const Projects = () => {
     }, 16);
 
     return () => clearInterval(timer);
-  }, [activeIndex, isPaused, projects.length]);
+  }, [activeIndex, isPaused, projects.length, slideTime]);
 
   // WebMCP: let browser agents open a project in the showcase.
   useEffect(
