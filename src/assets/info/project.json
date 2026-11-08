@@ -1,5 +1,14 @@
 [
   {
+    "title": "Finlyt",
+    "description": "An Android expense tracker that reads UPI and bank payment SMS automatically, reminds you to log at times you choose, and turns plain words or voice notes into categorised, split expenses using Gemini AI.",
+    "img": "/projects/finlyt.png",
+    "github": "https://github.com/pradnyeshbhalekar/finlyt",
+    "github2": "https://github.com/pradnyeshbhalekar/finlyt-web",
+    "live": "https://finlyt.onrender.com",
+    "techstack": ["React Native", "Expo", "Flask", "PostgreSQL", "Gemini"]
+  },
+  {
     "title": "Reachr",
     "description": "Enter a domain, your goal, and a one-liner. Reachr finds similar companies, locates decision-makers, and generates personalised cold outreach — in under a minute.",
     "img": "/projects/reachr.png",
